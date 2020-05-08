@@ -2,57 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="221c9174-811e-46a9-8da4-a0876fa2808d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/old_index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/CHINESETAKEAWAY.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/chinese.msyh.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/chinesetakeaway-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/chinesetakeaway-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/cashDesk.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/config/dbconfig.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/css/cashDesk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/css/general.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/css/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/css/menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/css/sales.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/js/cashDesk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/js/header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/js/sales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/loginRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/logout.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/main.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/menu.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/payOrder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/requires/header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/sales.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kassa/salesOverview.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/MENUKAART.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/contact.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/contact_new.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/menukaarten/restaurant-menukaart-1-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/menukaarten/restaurant-menukaart-1-2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/menukaarten/restaurant-menukaart-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/menukaarten/restaurant-menukaart-1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paginas/news.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/2020-03-24_1406.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/dragon-large.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/dragon-small-flipped.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/dragon-small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/goodpay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/menu_bg_gradient.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +118,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1bFmwKAeQwbpItaByIim4dX6lS2" />
@@ -213,7 +169,7 @@
       <workItem from="1588757420943" duration="1695000" />
       <workItem from="1588925090843" duration="667000" />
       <workItem from="1588925790877" duration="1984000" />
-      <workItem from="1588927875591" duration="20000" />
+      <workItem from="1588927875591" duration="1800000" />
     </task>
     <servers />
   </component>
@@ -228,6 +184,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588327816907" />
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1588929744939">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588929744939" />
+    <state width="1877" height="261" key="GridCell.Tab.0.center" timestamp="1588929744938">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588929744938" />
+    <state width="1877" height="261" key="GridCell.Tab.0.left" timestamp="1588929744938">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588929744938" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right" timestamp="1588929744939">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588929744939" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1588927775813">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
