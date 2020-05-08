@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="221c9174-811e-46a9-8da4-a0876fa2808d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Raj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/nav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +168,7 @@
       <workItem from="1588757420943" duration="1695000" />
       <workItem from="1588925090843" duration="667000" />
       <workItem from="1588925790877" duration="1984000" />
-      <workItem from="1588927875591" duration="1800000" />
+      <workItem from="1588927875591" duration="4645000" />
     </task>
     <servers />
   </component>
@@ -208,6 +207,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="627" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588927875803" />
+    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588930707066">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588930707066" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1588927681705">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
