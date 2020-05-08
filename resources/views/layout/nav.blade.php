@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse justify-content-xl-around" id="navbarNavDropdown">
                 <ul class="nav navbar-nav ">
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Menu</a>
+                        <a class="nav-link" href="{{route('menu')}}">Menu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"  href="#">Nieuws</a>
