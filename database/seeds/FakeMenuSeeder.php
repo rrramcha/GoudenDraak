@@ -13,8 +13,9 @@ class FakeMenuSeeder extends Seeder
     {
         DB::table('menu')->insert([
             'menu_number' => 111,
-            'item_name' => '',
-            'price' => 10,
+            'item_name' => 'Ossenhaas met ',
+            'price' => 16.90,
+            'item_category' =>
 
         ]);
     }

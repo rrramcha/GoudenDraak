@@ -20,7 +20,7 @@ class CreateMenuTable extends Migration
             $table->char('menu_suffix')->nullable();
             $table->string('item_name');
             $table->float('price');
-            $table->text('description');
+            $table->text('description')->nullable();
         });
     }
 
