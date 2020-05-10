@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="221c9174-811e-46a9-8da4-a0876fa2808d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/seeds/MenuSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_10_111411_create_menu_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_111411_create_menu_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/FakeMenuSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FakeMenuSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,10 +215,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="627" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589109812458" />
-    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588930707066">
+    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589113783123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588930707066" />
+    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589113783123" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589108879579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
