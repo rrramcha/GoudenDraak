@@ -63,6 +63,9 @@ class ItemCategorySeeder extends Seeder
             'category_name' => 'Vegetarische gerechten'
         ]);
         DB::table('item_categories')->insert([
+            'category_name' => 'Kindermenu\'s'
+        ]);
+        DB::table('item_categories')->insert([
             'category_name' => 'Rijsttafels'
         ]);
     }
