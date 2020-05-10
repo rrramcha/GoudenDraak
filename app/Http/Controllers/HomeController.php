@@ -10,43 +10,43 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('home.index');
     }
 
     /**
      * Display the menu.
      *
      * @
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showMenu()
     {
-        return view('menu');
+        return view('home.menu');
     }
 
+    /**
+     * Display the contactpage.
+     *
+     * @
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showContact()
+    {
+        return view('home.contact');
+    }
+
+    /**
+     * Display the newspage.
+     *
+     * @
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showNews()
+    {
+        return view('home.news');
+    }
 }

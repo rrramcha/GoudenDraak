@@ -1,5 +1,5 @@
 <section class="header">
-    <div class="container">
+    <div class="container mb-5">
         <nav class="navbar navbar-expand-xl navbar-light">
             <a class="navbar-brand navbar-brand-main text-center" href="/">
                 <img src="{{asset('storage/pictures/dragon-small.png')}}" height="75" alt="logo">
@@ -14,10 +14,10 @@
                         <a class="nav-link" href="{{route('menu')}}">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="#">Nieuws</a>
+                        <a class="nav-link" href="{{route('news')}}">Nieuws</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{{route('contact')}}">Contact</a>
                     </li>
                 </ul>
             </div>
