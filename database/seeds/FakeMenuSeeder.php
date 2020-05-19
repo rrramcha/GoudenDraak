@@ -326,6 +326,90 @@ class FakeMenuSeeder extends Seeder
             'item_category' => 'Rijsttafels',
             'description' => 'Peking Soep (pittige lichtzure soep), Chinese Dim Sum (mini loempia, kerrie ko, pangsit goreng garnalen, pasteitje), Tjieuw Yem Kai (licht gebraden kipfilet met zout en peper), Lychee Yuk (licht gebraden varkensvlees met lychee in zoetzure saus), Yu Sian Ngau Yuk (ossenhaas met licht zoet pikante kruiden saus)'
         ]);
+
+        //Garnalen gerechten
+
+        DB::table('menu')->insert([
+            'menu_number' => 98,
+            'item_name' => 'Garnalen met champignons in knoflooksaus',
+            'price' => 15.9,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 99,
+            'item_name' => 'Garnalen met tomatensaus',
+            'price' => 15.9,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 100,
+            'item_name' => 'Garnalen met tomatensaus',
+            'price' => 15.9,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 101,
+            'item_name' => 'Garnalen met broccoli',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 102,
+            'item_name' => 'Garnalen met Chinese champignons',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 103,
+            'item_name' => 'Garnalen met kerriesaus',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 104,
+            'item_name' => 'Garnalen met zwarte bonensaus',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 105,
+            'item_name' => 'Garnalen met zwarte pepersaus',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 106,
+            'item_name' => 'Garnalen met chilisaus',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 107,
+            'item_name' => 'Yu Sian Haa',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten',
+            'description' => 'garnalen met licht zoet pikante kruidensaus'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 108,
+            'item_name' => 'Tjieuw Yem Haa',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten',
+            'description' => 'licht gebraden garnalen met zout en peper'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 109,
+            'item_name' => 'Tja Tai Haa',
+            'price' => 16.1,
+            'item_category' => 'Garnalen gerechten',
+            'description' => 'krokant gebakken garnalen'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 110,
+            'item_name' => 'Sze Chuan Haa',
+            'price' => 16.4,
+            'item_category' => 'Garnalen gerechten'
+        ]);
     }
 
 }
