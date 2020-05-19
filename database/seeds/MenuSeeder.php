@@ -264,7 +264,315 @@ class MenuSeeder extends Seeder
             'price' => 10.9,
             'item_category' => 'Bami en nasi gerechten'
         ]);
+        DB::table('menu')->insert([
+            'menu_number' => 34,
+            'item_name' => 'Bami Yeung Chow',
+            'menu_suffix' => 'A',
+            'price' => 13,
+            'item_category' => 'Bami en nasi gerechten',
+            'description' => 'met garnaaltjes en Cha Sieuw-vlees'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 35,
+            'item_name' => 'Bami of Nasi Malay',
+            'price' => 9.3,
+            'item_category' => 'Bami en nasi gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 36,
+            'item_name' => 'Bami of Nasi met kipfilet',
+            'price' => 9.3,
+            'item_category' => 'Bami en nasi gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 37,
+            'item_name' => 'Bami of Nasi met varkensvlees',
+            'price' => 9.3,
+            'item_category' => 'Bami en nasi gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 38,
+            'item_name' => 'Bami of Nasi met garnalen',
+            'price' => 14.3,
+            'item_category' => 'Bami en nasi gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 39,
+            'item_name' => 'Bami of Nasi met ossenhaas',
+            'price' => 15.3,
+            'item_category' => 'Bami en nasi gerechten'
+        ]);
 
-        
+        //Combinatie gerechten
+
+        DB::table('menu')->insert([
+            'menu_number' => 40,
+            'item_name' => 'Babi Pangang,Foe Yong Hai en saté',
+            'price' => 15.8,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 41,
+            'item_name' => 'Babi Pangang, Tjap Tjoy en saté',
+            'price' => 15.8,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 42,
+            'item_name' => 'Babi Pangang, Koe Loe Yuk en saté',
+            'price' => 15.8,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 43,
+            'item_name' => 'Babi Pangang, Tau Sie Kai en saté',
+            'price' => 16.5,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 44,
+            'item_name' => 'Koe Loe Yuk, Foe Yong Hai en saté',
+            'price' => 15.8,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 45,
+            'item_name' => 'Koe Loe Yuk, Tjap Tjoy en saté',
+            'price' => 15.8,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 46,
+            'item_name' => 'Foe Yong Hai, Tjap Tjoy en saté',
+            'price' => 15.8,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 47,
+            'item_name' => 'Foe Yong Hai, Kip Kerrie en saté',
+            'price' => 16.5,
+            'item_category' => 'Combinatie gerechten'
+        ]);
+
+        //Combinatie gerechten
+
+        DB::table('menu')->insert([
+            'menu_number' => 50,
+            'item_name' => 'Mihoen Ling Fa',
+            'price' => 16.4,
+            'item_category' => 'Mihoen gerechten',
+            'description' => 'Foe Yong Hai, Babi Pangang, saté en kippenpootje'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 51,
+            'item_name' => 'Mihoen met varkensvlees',
+            'price' => 9.3,
+            'item_category' => 'Mihoen gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 52,
+            'item_name' => 'Mihoen met kipfilet',
+            'price' => 10.4,
+            'item_category' => 'Mihoen gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 53,
+            'item_name' => 'Mihoen met ossenhaas',
+            'price' => 16.4,
+            'item_category' => 'Mihoen gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 54,
+            'item_name' => 'Mihoen met garnalen',
+            'price' => 15.3,
+            'item_category' => 'Mihoen gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 55,
+            'item_name' => 'Mihoen Singapore-style',
+            'price' => 11.9,
+            'item_category' => 'Mihoen gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 56,
+            'item_name' => 'Mihoen met Cha Sieuw vlees',
+            'price' => 11.2,
+            'item_category' => 'Mihoen gerechten',
+        ]);
+
+        //Combinatie gerechten
+
+        DB::table('menu')->insert([
+            'menu_number' => 57,
+            'item_name' => 'Chinese Bami Ling Fa',
+            'price' => 16.9,
+            'item_category' => 'Chinese bami gerechten',
+            'description' => 'Foe Yong Hai, Babi Pangang, saté en Kippootje'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 58,
+            'item_name' => 'Chinese Bami met varkensvlees',
+            'price' => 10.1,
+            'item_category' => 'Chinese bami gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 58,
+            'item_suffix' => 'A',
+            'item_name' => 'Chinese Bami met kipfilet',
+            'price' => 11.1,
+            'item_category' => 'Chinese bami gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 58,
+            'item_suffix' => 'B',
+            'item_name' => 'Chinese Bami met cha Sieuw-Vlees',
+            'price' => 12.2,
+            'item_category' => 'Chinese bami gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 58,
+            'item_suffix' => 'C',
+            'item_name' => 'Chinese Bami met garnalen',
+            'price' => 15.8,
+            'item_category' => 'Chinese bami gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 58,
+            'item_suffix' => 'D',
+            'item_name' => 'Chinese Bami met ossenhaas',
+            'price' => 17.4,
+            'item_category' => 'Chinese bami gerechten',
+        ]);
+
+        //Indische gerechten
+
+        DB::table('menu')->insert([
+            'item_prefix' => 'M',
+            'menu_number' => 1,
+            'item_name' => 'Bami of Nasi Rames Ling Fa',
+            'price' => 15.3,
+            'item_category' => 'Indische gerechten',
+            'description' => 'Babi Pangang, Foe Yong Hai, Daging Roedjak, Atjar, saté en Kippootje'
+        ]);
+        DB::table('menu')->insert([
+            'item_prefix' => 'M',
+            'menu_number' => 2,
+            'item_name' => 'Bami of Nasi Rames',
+            'price' => 8.8,
+            'item_category' => 'Indische gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'item_prefix' => 'M',
+            'menu_number' => 3,
+            'item_name' => 'Bami of Nasi Rames speciaal',
+            'price' => 10.8,
+            'item_category' => 'Indische gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'item_prefix' => 'M',
+            'menu_number' => 4,
+            'item_name' => 'Gado Gado',
+            'price' => 7.6,
+            'item_category' => 'Indische gerechten',
+            'description' => 'met witte rijst'
+        ]);
+        DB::table('menu')->insert([
+            'item_prefix' => 'M',
+            'menu_number' => 5,
+            'item_name' => 'Daging Smoor',
+            'price' => 13.3,
+            'item_category' => 'Indische gerechten',
+            'description' => 'met witte rijst'
+        ]);
+        DB::table('menu')->insert([
+            'item_prefix' => 'M',
+            'menu_number' => 5,
+            'item_name' => 'Daging Roedjak',
+            'price' => 13.3,
+            'item_category' => 'Indische gerechten',
+            'description' => 'met witte rijst'
+        ]);
+
+        //Eiergerechten
+
+        DB::table('menu')->insert([
+            'menu_number' => 59,
+            'item_name' => 'Foe Yong Hai Ling Fa',
+            'price' => 16.4,
+            'item_category' => 'Eiergerechten',
+            'description' => 'ossenhaas, garnalen en kipfilet'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 60,
+            'item_name' => 'Foe Yong Hai met varkensvlees',
+            'price' => 8.8,
+            'item_category' => 'Eiergerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 61,
+            'item_name' => 'Foe Yong Hai met kipfilet',
+            'price' => 9.2,
+            'item_category' => 'Eiergerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 62,
+            'item_name' => 'Foe Yong Hai met garnalen',
+            'price' => 15.3,
+            'item_category' => 'Eiergerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 63,
+            'item_name' => 'Foe Yong Hai met krab',
+            'price' => 15.3,
+            'item_category' => 'Eiergerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 63,
+            'item_name' => 'Foe Yong Hai met Chai Sieuw Vlees',
+            'item_suffix' => 'A',
+            'price' => 11.2,
+            'item_category' => 'Eiergerechten'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 63,
+            'item_name' => 'Foe Yong Hai met ossenhaas',
+            'item_suffix' => 'B',
+            'price' => 16.4,
+            'item_category' => 'Eiergerechten'
+        ]);
+
+        //Groenten gerechten
+
+        DB::table('menu')->insert([
+            'menu_number' => 64,
+            'item_name' => 'Tjap Tjoy Ling Fa',
+            'price' => 16.4,
+            'item_category' => 'Groenten gerechten',
+            'description' => 'ossenhaas, garnalen en kipfilet'
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 65,
+            'item_name' => 'Tjap Tjoy met varkensvlees',
+            'price' => 8.8,
+            'item_category' => 'Groenten gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 66,
+            'item_name' => 'Tjap Tjoy met kipfilet',
+            'price' => 9.2,
+            'item_category' => 'Groenten gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 67,
+            'item_name' => 'Tjap Tjoy met ossenhaas',
+            'price' => 16.4,
+            'item_category' => 'Groenten gerechten',
+        ]);
+        DB::table('menu')->insert([
+            'menu_number' => 68,
+            'item_name' => 'Tjap Tjoy met garnalen',
+            'price' => 15.3,
+            'item_category' => 'Groenten gerechten',
+        ]);
     }
 }
