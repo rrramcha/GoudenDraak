@@ -11,4 +11,11 @@
     left: 0;
     width: 100% !important;
     height: 100% !important;
+    border-radius: 5%;
+}
+
+.menu td{
+    border: transparent;
+    font-weight: bold;
+    color: #dfbc5e;
 }

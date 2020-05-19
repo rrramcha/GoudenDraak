@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ItemCategory;
+use App\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -25,7 +27,13 @@ class HomeController extends Controller
      */
     public function showMenu()
     {
-        return view('home.menu');
+        $menuItems = MenuItem::all();
+        $itemCategories = ItemCategory::all();
+        $grouped = $menuItems->groupBy('item_category');
+        return view('home.menu', [
+            'itemCategories' => $itemCategories,
+            'menuItems' => $grouped
+        ]);
     }
 
     /**
