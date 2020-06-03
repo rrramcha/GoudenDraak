@@ -70,9 +70,9 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #dfbc5e;
+  color: #212529;
   text-align: left;
-  background-color:  #B51F09;
+  background-color: #f8fafc;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10880,13 +10880,5 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-
-    @font-face {
-        font-family: 'chinese_takeawayregular';
-        src: url('resources/fonts/chinesetakeaway-webfont.woff2') format('woff2'),
-        url('resources/fonts/chinesetakeaway-webfont.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
 }
 

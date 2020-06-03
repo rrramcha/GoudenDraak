@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ItemCategory;
+use App\MenuItem;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -14,7 +16,13 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('register.index');
+        $menuItems = MenuItem::all();
+        $itemCategories = ItemCategory::all();
+        $grouped = $menuItems->groupBy('item_category');
+        return view('register.index', [
+            'itemCategories' => $itemCategories,
+            'menuItems' => $grouped
+        ]);
     }
 
     /**
@@ -26,5 +34,12 @@ class RegisterController extends Controller
     public function login()
     {
         return view('register.login');
+    }
+
+    public function readItems(){
+        $menuItems = MenuItem::all();
+        $itemCategories = ItemCategory::all();
+        $grouped = $menuItems->groupBy('item_category');
+        return $menuItems;
     }
 }

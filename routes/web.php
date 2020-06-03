@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/menu', 'HomeController@showMenu')->name('menu');
 Route::get('/contact', 'HomeController@showContact')->name('contact');
 Route::get('/news', 'HomeController@showNews')->name('news');
+Route::get ( '/vueitems', 'RegisterController@readItems' );
 
 Route::prefix('kassa')->name('register')->group(
     function () {
