@@ -14,7 +14,7 @@ class CreateItemCategories extends Migration
     public function up()
     {
         Schema::create('item_categories', function (Blueprint $table) {
-            $table->string('category_name');
+            $table->string('category_name')->primary();
         });
     }
 
