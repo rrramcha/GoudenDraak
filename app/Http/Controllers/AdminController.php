@@ -38,31 +38,51 @@ class AdminController extends Controller
 
     public function createDish(){
         $itemCategories = ItemCategory::all();
-        return view('admin.dishes.createdish', [
+        return view('admin.dishes.create', [
             'itemCategories' => $itemCategories
         ]);
     }
 
     public function storeDish(Request $request){
         $validData = $request->validate([
-            'menu_prefix' => '',
-            'menu_number' => 'required',
-            'menu_suffix' => '',
+            'item_name' => 'required',
+            'price' => 'required',
+            'item_category' => 'required'
+        ]);
+        $number = ['menu_number' => MenuItem::max('menu_number')+1];
+        $data = array_merge($validData, $number);
+        $dish = MenuItem::create($data);
+        $dish->save();
+
+        return redirect(route('admin.dish.overview'));
+    }
+
+    /**
+     * @param MenuItem $menuItem
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function editDish(MenuItem $menuItem){
+        $itemCategories = ItemCategory::all();
+        return view('admin.dishes.edit', [
+            'itemCategories' => $itemCategories,
+            'menuItem' => $menuItem
+        ]);
+    }
+
+    public function updateDish(MenuItem $menuItem, Request $request){
+        $validData = $request->validate([
             'item_name' => 'required',
             'price' => 'required',
             'item_category' => 'required'
         ]);
 
-        $dish = MenuItem::create([
-            'menu_prefix' => $request->input('menu_prefix'),
-            'menu_number' => $request->input('menu_number'),
-            'menu_suffix' => $request->input('menu_suffix'),
-            'item_name' => $request->input('item_name'),
-            'price' => $request->input('price'),
-            'item_category' => $request->input('item_category')
-        ]);
-
-        $dish->save();
+        $menuItem->update($validData);
+        $menuItem->save();
         return redirect('admin/dishes');
+    }
+
+    public function deleteDish(MenuItem $menuItem){
+        $menuItem->delete();
+        return redirect(route('admin.dish.overview'));
     }
 }

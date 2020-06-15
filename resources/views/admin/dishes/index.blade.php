@@ -42,9 +42,10 @@
                             <td>
                                 {{$item->price}}
                             </td>
-
                             <td>
-                                <button class="btn btn-success pb-0 pt-0" @click="addMenuItem">Bewerken</button>
+                                <button class="btn btn-success">
+                                    <a class="btn-success" href="{{ route('admin.dish.edit', $item) }}">Bewerken</a>
+                                </button>
                             </td>
                         </tr>
 

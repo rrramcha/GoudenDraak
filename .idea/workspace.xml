@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="221c9174-811e-46a9-8da4-a0876fa2808d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_15_152323_menu_unique_constraint.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/dishes/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MenuItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MenuItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_10_111411_create_menu_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_111411_create_menu_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_10_111708_create_item_categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_111708_create_item_categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dishes/createdish.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dishes/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dishes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dishes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,9 +264,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592226482197" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592226828472">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592247709368">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592226828472" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592247709368" />
   </component>
 </project>

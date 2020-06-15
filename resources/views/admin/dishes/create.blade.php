@@ -16,27 +16,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="menu_prefix">Menu prefix</label>
-                        <input name="menu_prefix" type="text" class="form-control" id="menu_prefix">
-                        <small class="form-text text-muted"></small>
-                        <small class="text-danger">{{ $errors->first('menu_prefix') }}</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="menu_number">Menu nummer</label>
-                        <input name="menu_number" type="text" class="form-control" id="menu_number" required>
-                        <small class="form-text text-muted"></small>
-                        <small class="text-danger">{{ $errors->first('menu_number') }}</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="menu_suffix">Menu suffix</label>
-                        <input name="menu_suffix" type="text" class="form-control" id="menu_suffix">
-                        <small class="form-text text-muted"></small>
-                        <small class="text-danger">{{ $errors->first('menu_suffix') }}</small>
-                    </div>
-
-                    <div class="form-group">
                         <label for="price">Prijs</label>
                         <input name="price" type="text" class="form-control" id="price" required>
                         <small class="form-text text-muted"></small>

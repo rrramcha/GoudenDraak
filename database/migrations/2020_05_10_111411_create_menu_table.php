@@ -15,13 +15,15 @@ class CreateMenuTable extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->char('menu_prefix')->nullable();
+            $table->char('menu_prefix', 1)->nullable();
             $table->integer('menu_number');
-            $table->char('menu_suffix')->nullable();
+            $table->char('menu_suffix', 1)->nullable();
             $table->string('item_name');
             $table->float('price');
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->unique(array('menu_prefix', 'menu_number', 'menu_suffix'));
         });
     }
 

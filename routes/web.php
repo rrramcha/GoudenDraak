@@ -32,5 +32,8 @@ Route::prefix('admin')->name('admin.')->group(
         Route::get('/dishes', 'AdminController@dishOverview')->name('dish.overview');
         Route::get('/dishes/create', 'AdminController@createDish')->name('dish.create');
         Route::post('dishes/create/save', 'AdminController@storeDish')->name('dish.store');
+        Route::get('/dishes/edit/{menuItem}', 'AdminController@editDish')->name('dish.edit');
+        Route::post('/dishes/edit/update/{menuItem}', 'AdminController@updateDish')->name('dish.update');
+        Route::delete('/dishes/delete/{menuItem}', 'AdminController@deleteDish')->name('dish.delete');
     }
 );
