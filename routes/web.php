@@ -25,3 +25,12 @@ Route::prefix('kassa')->name('register')->group(
         Route::get('/login', 'RegisterController@login')->name('');
     }
 );
+
+Route::prefix('admin')->name('admin.')->group(
+    function () {
+        Route::get('', 'AdminController@index')->name('overview');
+        Route::get('/dishes', 'AdminController@dishOverview')->name('dish.overview');
+        Route::get('/dishes/create', 'AdminController@createDish')->name('dish.create');
+        Route::post('dishes/create/save', 'AdminController@storeDish')->name('dish.store');
+    }
+);

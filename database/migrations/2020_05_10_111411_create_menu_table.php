@@ -21,6 +21,7 @@ class CreateMenuTable extends Migration
             $table->string('item_name');
             $table->float('price');
             $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
