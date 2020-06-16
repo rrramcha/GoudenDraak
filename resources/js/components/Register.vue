@@ -67,7 +67,7 @@
                                 {{ item[1] }}
                             </td>
                             <td>
-                                <button v-on:click="removeMenuItem(item.item_name, item.price)" class="btn btn-sm btn-danger">x
+                                <button v-on:click="removeMenuItem(item)" class="btn btn-sm btn-danger">x
                                 </button>
                             </td>
                         </tr>
@@ -105,9 +105,11 @@
                 this.updatePrice();
             },
 
-            removeMenuItem(){
-
-
+            removeMenuItem(item){
+                let index = this.orderitems.indexOf(item);
+                if (index > -1) {
+                    this.orderitems.splice(index, 1);
+                }
                 this.updatePrice();
             },
 

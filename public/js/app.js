@@ -2051,7 +2051,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.orderitems.push(order);
       this.updatePrice();
     },
-    removeMenuItem: function removeMenuItem() {
+    removeMenuItem: function removeMenuItem(item) {
+      var index = this.orderitems.indexOf(item);
+
+      if (index > -1) {
+        this.orderitems.splice(index, 1);
+      }
+
       this.updatePrice();
     },
     updatePrice: function updatePrice() {
@@ -38550,10 +38556,7 @@ var render = function() {
                           staticClass: "btn btn-sm btn-danger",
                           on: {
                             click: function($event) {
-                              return _vm.removeMenuItem(
-                                item.item_name,
-                                item.price
-                              )
+                              return _vm.removeMenuItem(item)
                             }
                           }
                         },
@@ -50945,8 +50948,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
