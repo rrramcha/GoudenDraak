@@ -14,7 +14,8 @@ class Allergies extends Migration
     public function up()
     {
         Schema::create('allergies', function (Blueprint $table) {
-            $table->string('name')->primary();
+            $table->id();
+            $table->string('name');
         });
     }
 

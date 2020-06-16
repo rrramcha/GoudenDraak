@@ -25,8 +25,24 @@ class AllergySeeder extends Seeder
         ]);
 
         DB::table('item_has_allergy')->insert([
-            'allergy_name' => 'lactose',
+            'allergy_id' => 1,
             'item_id' => 1
+        ]);
+        DB::table('item_has_allergy')->insert([
+            'allergy_id' => 2,
+            'item_id' => 1
+        ]);
+        DB::table('item_has_allergy')->insert([
+            'allergy_id' => 3,
+            'item_id' => 1
+        ]);
+        DB::table('item_has_allergy')->insert([
+            'allergy_id' => 1,
+            'item_id' => 2
+        ]);
+        DB::table('item_has_allergy')->insert([
+            'allergy_id' => 2,
+            'item_id' => 5
         ]);
     }
 }

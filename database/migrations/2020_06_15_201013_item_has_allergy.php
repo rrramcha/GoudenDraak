@@ -14,10 +14,10 @@ class ItemHasAllergy extends Migration
     public function up()
     {
         Schema::create('item_has_allergy', function (Blueprint $table) {
-            $table->string('allergy_name');
+            $table->bigInteger('allergy_id')->unsigned();
             $table->bigInteger('item_id')->unsigned();
 
-            $table->foreign('allergy_name')->references('name')->on('allergies');
+            $table->foreign('allergy_id')->references('id')->on('allergies');
             $table->foreign('item_id')->references('id')->on('menu');
         });
     }
