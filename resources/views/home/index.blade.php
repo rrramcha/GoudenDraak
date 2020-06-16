@@ -30,9 +30,9 @@
                 <img style="vertical-align: middle;" src="{{ asset('storage/pictures/dragon-small-flipped.png')}}" alt="Golden Dragon" height="50px">
             </td>
             <td>
-                <a href="paginas/aanbiedingen.html" style="color:yellow;font-weight:bold;text-decoration: none;">
+                <a href="{{route('menu')}}" style="color:yellow;font-weight:bold;text-decoration: none;">
                     <marquee behavior="scroll" direction="left">
-                        DIT IS OM EEN PULL TE TESTEN OP LINUX YEEEEEEEEEEEEEEEEEEEEEEEEE
+                        Welkom bij de Gouden Draak
                     </marquee>
                 </a>
             </td>
