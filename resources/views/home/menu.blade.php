@@ -1,10 +1,12 @@
 @extends('layout.layout')
 
 @section('content')
+
     <a class="btn btn-success" href="{{route('menu.download')}}" target="_blank">Download het menu</a>
     <div id="favorites">
-        <ul style="list-style: none">
-            <li>1</li>
+        <h4>Favoriete gerechten: </h4>
+        <ul style="list-style: none" id="favoritelist">
+
         </ul>
     </div>
     <div>
@@ -42,7 +44,7 @@
                         {{$item->price}}
                     </td>
                     <td>
-                        <button onclick="markFavorite({{$item->menu_number}})" class="btn btn-danger">❤</button>
+                        <button onclick="markFavorite('{{$item->item_name}}')" class="btn btn-danger">❤</button>
                     </td>
                 </tr>
                     @endforeach
@@ -53,9 +55,46 @@
 @endsection
 
 <script>
-    function markFavorite(dish){
+    favorites = [];
+
+    function markFavorite(menunumber) {
+        if(this.isFavorite(menunumber)){
+            const index = this.favorites.indexOf(menunumber);
+            if(index === -1){
+                return;
+            }
+            this.favorites.splice(index, 1);
+        }
+        else {
+            this.favorites.push(menunumber);
+        }
+        this.saveFavorites();
+    }
+
+    function isFavorite(menunumber) {
+        return this.favorites.some(e => e === menunumber);
+    }
+
+    function saveFavorites(){
         let date = new Date();
         date.setTime(date.getTime()+(1*24*60*60*1000));
-        document.cookie = "favorite" + "=" + dish + "; expires=" + date.toGMTString();
+        let data = JSON.stringify(this.favorites);
+        document.cookie = "favorite=" + data +"; expires=" + date.toGMTString();
+        this.loadFavorites();
     }
+
+    function loadFavorites() {
+        let el = document.getElementById("favoritelist");
+        el.innerHTML = "";
+        favorites.forEach(makeElement);
+    }
+
+    function makeElement(item) {
+        let el = document.getElementById("favoritelist");
+        let node = document.createElement("li");
+        let text = document.createTextNode(item);
+        node.appendChild(text);
+        el.appendChild(node);
+    }
+
 </script>
