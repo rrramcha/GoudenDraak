@@ -6,7 +6,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body style="background: darkred">
 @include('layout.nav')
 @yield('content')
 

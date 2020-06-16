@@ -11,6 +11,9 @@
             <div class="collapse navbar-collapse justify-content-xl-around" id="navbarNavDropdown" >
                 <ul class="nav navbar-nav">
                     <li class="nav-item ">
+                        <a class="nav-link" href="{{route('home')}} " style="color: #dfbc5e">Home</a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="{{route('menu')}} " style="color: #dfbc5e">Menu</a>
                     </li>
                     <li class="nav-item">
