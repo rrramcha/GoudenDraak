@@ -127,6 +127,8 @@
                     console.log(response.data);
 
                 });
+                this.orderitems = [];
+                this.updatePrice();
             }
         }
 

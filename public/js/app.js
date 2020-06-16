@@ -2073,6 +2073,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.post('/sendorder', this.orderitems).then(function (response) {
         console.log(response.data);
       });
+      this.orderitems = [];
+      this.updatePrice();
     }
   }
 });
