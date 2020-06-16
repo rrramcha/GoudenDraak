@@ -10,6 +10,9 @@ class MenuItem extends Model
     protected $fillable = ['menu_prefix', 'menu_number', 'menu_suffix', 'price', 'item_name', 'item_category'];
 
     public function allergies(){
-        return $this->hasMany(Allergy::class);
+        return $this->belongsToMany(Allergy::class);
+    }
+    public function spiciness(){
+        return $this->hasOne(Spiciness::class);
     }
 }

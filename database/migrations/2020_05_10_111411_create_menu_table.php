@@ -21,8 +21,8 @@ class CreateMenuTable extends Migration
             $table->string('item_name');
             $table->float('price');
             $table->text('description')->nullable();
+            $table->integer('spiciness_scale')->default(0);
             $table->timestamps();
-
             $table->unique(array('menu_prefix', 'menu_number', 'menu_suffix'));
         });
     }
