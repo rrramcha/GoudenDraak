@@ -8,7 +8,7 @@ class Allergy extends Model
 {
     protected $table = 'allergies';
 
-    public function dishes(){
-        return $this->belongsToMany(MenuItem::class, 'item_has_allergy', 'allergy_name', 'item_id');
+    public function items(){
+        return $this->belongsToMany(MenuItem::class);
     }
 }
