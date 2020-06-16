@@ -74,7 +74,7 @@
                         </tbody>
                     </table>
                     <h4>Totaalprijs: € {{ totalprice }}</h4>
-                    <button  v-on:click="sendOrder" class="btn btn-sm">Bestelling Aanmaken</button>
+                    <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling Aanmaken</button>
                 </div>
             </div>
         </div>

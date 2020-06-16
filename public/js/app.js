@@ -38577,7 +38577,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "btn btn-sm", on: { click: _vm.sendOrder } },
+            {
+              staticClass: "btn btn-sm btn-info",
+              on: { click: _vm.sendOrder }
+            },
             [_vm._v("Bestelling Aanmaken")]
           )
         ])
@@ -50957,8 +50960,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ItemCategory;
 use App\MenuItem;
 use App\Transaction;
+use App\TransactionItem;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -90,16 +91,21 @@ class HomeController extends Controller
     }
 
     public function sendOrder(Request $request){
-
         $data = $request->all();
-
-
 
         $transaction = Transaction::create([
             'date'=>Carbon::now(), 'comment'=>'a']);
 
+        $id = $transaction->id;
 
+        foreach($data as $item)
+        {
+            TransactionItem::create([
+                'transaction_id' => $id,
+                'item_id' => $item['id']
+            ]);
+        }
 
-        return response()->json([$request->all()]);
+        return response()->json($data);
     }
 }
