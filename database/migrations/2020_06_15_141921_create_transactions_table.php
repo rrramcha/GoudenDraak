@@ -16,6 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id('id');
             $table->dateTime('date');
+            $table->string('comment');
             $table->timestamps();
         });
     }
