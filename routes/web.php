@@ -18,7 +18,7 @@ Route::get('/menu', 'HomeController@showMenu')->name('menu');
 Route::get('/menu/download', 'HomeController@downloadMenu')->name('menu.download');
 Route::get('/contact', 'HomeController@showContact')->name('contact');
 Route::get('/news', 'HomeController@showNews')->name('news');
-Route::get ( '/vueitems', 'RegisterController@readItems' );
+Route::get('/getmenuitems', 'HomeController@getJSONMenu')->name('getmenuitems');
 
 Route::prefix('kassa')->name('register')->group(
     function () {

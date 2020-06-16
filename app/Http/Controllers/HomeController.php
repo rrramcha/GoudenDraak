@@ -83,7 +83,7 @@ class HomeController extends Controller
     public function GetJSONMenu(){
         $menuItems = MenuItem::all();
         $itemCategories = ItemCategory::all();
-        $grouped = $menuItems->groupBy('item_category');
-        return $grouped->toJson();
+
+        return $menuItems->toJson();
     }
 }
