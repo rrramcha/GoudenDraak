@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\App;
+use PHPUnit\Util\Json;
 
 class HomeController extends Controller
 {
@@ -77,5 +78,12 @@ class HomeController extends Controller
             'menuItems' => $grouped
         ]);
         return $pdf->download('menu.pdf');
+    }
+
+    public function GetJSONMenu(){
+        $menuItems = MenuItem::all();
+        $itemCategories = ItemCategory::all();
+        $grouped = $menuItems->groupBy('item_category');
+        return $grouped->toJson();
     }
 }
