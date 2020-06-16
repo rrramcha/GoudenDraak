@@ -36,5 +36,8 @@
     @endforeach
     </tbody>
 </table>
+
+<h1>Aanbiedingen: </h1>
+<p>Er zijn geen aanbiedingen op dit moment</p>
 </body>
 </html>
