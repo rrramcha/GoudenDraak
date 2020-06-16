@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ItemCategory;
 use App\MenuItem;
+use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -85,5 +87,19 @@ class HomeController extends Controller
         $itemCategories = ItemCategory::all();
 
         return $menuItems->toJson();
+    }
+
+    public function sendOrder(Request $request){
+
+        $data = $request->all();
+
+
+
+        $transaction = Transaction::create([
+            'date'=>Carbon::now(), 'comment'=>'a']);
+
+
+
+        return response()->json([$request->all()]);
     }
 }

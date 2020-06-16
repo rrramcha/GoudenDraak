@@ -86,8 +86,6 @@
         async created() {
             const response = await axios.get('/getmenuitems');
 
-            const stuff = response.data;
-            console.log(stuff);
             this.menuitems = response.data;
         },
 
@@ -118,13 +116,17 @@
                 for(let x = 0; x < this.orderitems.length; x++){
                     this.totalprice+=this.orderitems[x].price;
                 }
-                this.totalprice = Math.round(this.totalprice*100)/100
-                this.totalprice.toFixed(2)
-                parseFloat(this.totalprice)
+                this.totalprice = Math.round(this.totalprice*100)/100;
+                this.totalprice.toFixed(2);
+                parseFloat(this.totalprice);
             },
 
             sendOrder(){
+                axios.post('/sendorder', this.orderitems).then(function (response) {
 
+                    console.log(response.data);
+
+                });
             }
         }
 

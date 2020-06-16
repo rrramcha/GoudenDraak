@@ -14,13 +14,12 @@ class CreateTransactionsItemsTable extends Migration
     public function up()
     {
         Schema::create('transactions_items', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('transaction_id')->unsigned();
             $table->bigInteger('item_id')->unsigned();
-            $table->integer('amount');
             $table->timestamps();
             $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->foreign('item_id')->references('id')->on('menu');
-            $table->primary(['transaction_id', 'item_id']);
         });
     }
 

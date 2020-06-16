@@ -2016,7 +2016,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var response, stuff;
+      var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -2026,11 +2026,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               response = _context.sent;
-              stuff = response.data;
-              console.log(stuff);
               _this.menuitems = response.data;
 
-            case 6:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -2071,7 +2069,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.totalprice.toFixed(2);
       parseFloat(this.totalprice);
     },
-    sendOrder: function sendOrder() {}
+    sendOrder: function sendOrder() {
+      axios.post('/sendorder', this.orderitems).then(function (response) {
+        console.log(response.data);
+      });
+    }
   }
 });
 

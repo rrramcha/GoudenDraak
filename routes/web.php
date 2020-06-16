@@ -26,6 +26,7 @@ Route::prefix('kassa')->name('register')->group(
         Route::get('/login', 'RegisterController@login')->name('');
     }
 );
+Route::post('/sendorder', 'HomeController@sendOrder')->name('sendorder');
 
 Route::prefix('admin')->name('admin.')->group(
     function () {
