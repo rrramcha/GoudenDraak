@@ -16,12 +16,14 @@
                     <th>Menunummer</th>
                     <th>Naam</th>
                     <th>Prijs</th>
+                    <th>Allergieën</th>
+                    <th>Pittigheidschaal</th>
                     <th></th>
                 </tr>
             </thead>
             @foreach($menuItems as $category)
                 <tr>
-                    <td colspan="4" style="background-color: #b51f09; color: #dfbc5e; text-align: center; font-size: 1.5rem; border: transparent">
+                    <td colspan="6" style="background-color: #b51f09; color: #dfbc5e; text-align: center; font-size: 1.5rem; border: transparent">
                         <span class="" style="white-space:nowrap;">{{$category->first()->item_category}}</span>
                     </td>
                 </tr>
@@ -42,6 +44,24 @@
 
                     <td>
                         {{$item->price}}
+                    </td>
+                    <td>
+                        <ul style="padding: 0;">
+                        @foreach($item->allergies as $allergy)
+                             <li>{{$allergy->name}}</li>
+                        @endforeach
+                        </ul>
+                    </td>
+                    <td>
+                        @php
+                            $output_scale = $item->spiciness_scale;
+                            if($output_scale > 3)
+                            $output_scale = 3;
+                        @endphp
+                        @for ($i = 0; $i < $output_scale ; $i++)
+                            ⏺
+                        @endfor
+
                     </td>
                     <td>
                         <button onclick="markFavorite('{{$item->item_name}}')" class="btn btn-danger">❤</button>
