@@ -2010,6 +2010,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2046,9 +2047,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    addMenuItem: function addMenuItem(item_name, price) {
-      var order = [item_name, price];
-      this.orderitems.push(order);
+    addMenuItem: function addMenuItem(item) {
+      this.orderitems.push(item);
       this.updatePrice();
     },
     removeMenuItem: function removeMenuItem(item) {
@@ -2064,13 +2064,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.totalprice = 0;
 
       for (var x = 0; x < this.orderitems.length; x++) {
-        this.totalprice += this.orderitems[x][1];
+        this.totalprice += this.orderitems[x].price;
       }
 
       this.totalprice = Math.round(this.totalprice * 100) / 100;
       this.totalprice.toFixed(2);
       parseFloat(this.totalprice);
-    }
+    },
+    sendOrder: function sendOrder() {}
   }
 });
 
@@ -38508,7 +38509,7 @@ var render = function() {
                           staticClass: "btn btn-success",
                           on: {
                             click: function($event) {
-                              return _vm.addMenuItem(item.item_name, item.price)
+                              return _vm.addMenuItem(item)
                             }
                           }
                         },
@@ -38536,7 +38537,7 @@ var render = function() {
                     _c("td", [
                       _vm._v(
                         "\n                            " +
-                          _vm._s(item[0]) +
+                          _vm._s(item.item_name) +
                           "\n                        "
                       )
                     ]),
@@ -38544,7 +38545,7 @@ var render = function() {
                     _c("td", [
                       _vm._v(
                         "\n                            €\n                            " +
-                          _vm._s(item[1]) +
+                          _vm._s(item.price) +
                           "\n                        "
                       )
                     ]),
@@ -38570,7 +38571,13 @@ var render = function() {
             2
           ),
           _vm._v(" "),
-          _c("h4", [_vm._v("Totaalprijs: € " + _vm._s(_vm.totalprice))])
+          _c("h4", [_vm._v("Totaalprijs: € " + _vm._s(_vm.totalprice))]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-sm", on: { click: _vm.sendOrder } },
+            [_vm._v("Bestelling Aanmaken")]
+          )
         ])
       ])
     ])
@@ -50948,8 +50955,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -35,7 +35,7 @@
                                     {{ item.price }}
                                 </td>
                                 <td>
-                                    <button v-on:click="addMenuItem(item.item_name, item.price)" class="btn btn-success">+
+                                    <button v-on:click="addMenuItem(item)" class="btn btn-success">+
                                     </button>
                                 </td>
                             </tr>
@@ -60,11 +60,11 @@
                         <tbody v-for="item in orderitems">
                         <tr>
                             <td>
-                                {{ item[0] }}
+                                {{ item.item_name }}
                             </td>
                             <td>
                                 €
-                                {{ item[1] }}
+                                {{ item.price }}
                             </td>
                             <td>
                                 <button v-on:click="removeMenuItem(item)" class="btn btn-sm btn-danger">x
@@ -74,6 +74,7 @@
                         </tbody>
                     </table>
                     <h4>Totaalprijs: € {{ totalprice }}</h4>
+                    <button  v-on:click="sendOrder" class="btn btn-sm">Bestelling Aanmaken</button>
                 </div>
             </div>
         </div>
@@ -99,9 +100,8 @@
             };
         },
         methods: {
-            addMenuItem(item_name, price){
-                let order = [item_name, price];
-                this.orderitems.push(order);
+            addMenuItem(item){
+                this.orderitems.push(item);
                 this.updatePrice();
             },
 
@@ -116,11 +116,15 @@
             updatePrice(){
                 this.totalprice = 0;
                 for(let x = 0; x < this.orderitems.length; x++){
-                    this.totalprice+=this.orderitems[x][1];
+                    this.totalprice+=this.orderitems[x].price;
                 }
                 this.totalprice = Math.round(this.totalprice*100)/100
                 this.totalprice.toFixed(2)
                 parseFloat(this.totalprice)
+            },
+
+            sendOrder(){
+
             }
         }
 
