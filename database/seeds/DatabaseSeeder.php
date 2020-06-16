@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ItemCategorySeeder::class);
         $this->call(MenuSeeder::class);
+        $this->call(AllergySeeder::class);
     }
 }

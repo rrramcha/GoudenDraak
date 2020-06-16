@@ -6,6 +6,8 @@ use App\ItemCategory;
 use App\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -56,5 +58,24 @@ class HomeController extends Controller
     public function showNews()
     {
         return view('home.news');
+    }
+
+    /**
+     * Download a pdf of the menu
+     *
+     * @
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function downloadMenu()
+    {
+        $menuItems = MenuItem::all();
+        $itemCategories = ItemCategory::all();
+        $grouped = $menuItems->groupBy('item_category');
+
+        $pdf = PDF::loadView('home.menutable', [
+            'itemCategories' => $itemCategories,
+            'menuItems' => $grouped
+        ]);
+        return $pdf->download('menu.pdf');
     }
 }

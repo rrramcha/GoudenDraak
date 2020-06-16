@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/site.css')}}" rel="stylesheet">
@@ -11,5 +12,6 @@
 
 <script src="./resources/js/app.js"></script>
 </body>
+
 
 </html>

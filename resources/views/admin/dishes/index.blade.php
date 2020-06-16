@@ -37,6 +37,10 @@
                                 @if($item->description)
                                     <span style="color: #e6e0ae">({{$item->description}})</span>
                                 @endif
+                                @if($item->allergies)
+                                    <br>
+                                    <h1>{{$item->allergies}}</h1>
+                                    @endif
                             </td>
 
                             <td>

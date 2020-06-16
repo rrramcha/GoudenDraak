@@ -2,16 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="221c9174-811e-46a9-8da4-a0876fa2808d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_15_152323_menu_unique_constraint.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/dishes/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Allergy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_15_195145_allergies.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_15_201013_item_has_allergy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/AllergySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/MenuItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MenuItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_10_111411_create_menu_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_111411_create_menu_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_10_111708_create_item_categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_111708_create_item_categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dishes/createdish.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dishes/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/dishes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dishes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/menutable.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +50,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -145,6 +153,11 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1bFmwKAeQwbpItaByIim4dX6lS2" />
@@ -158,10 +171,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Blok 3/StudyMate" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -206,6 +220,7 @@
       <workItem from="1591192432218" duration="816000" />
       <workItem from="1591193511904" duration="7484000" />
       <workItem from="1592218277461" duration="6308000" />
+      <workItem from="1592298026711" duration="6553000" />
     </task>
     <servers />
   </component>
@@ -228,10 +243,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="694" y="431" key="ComposerInitDialogKey/0.0.1920.1040@0.0.1920.1040" timestamp="1589883080740" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1591193496660">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592251569349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591193496660" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592251569349" />
     <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1588929744939">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -260,13 +275,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589113783123" />
+    <state x="617" y="107" width="724" height="825" key="find.popup" timestamp="1592301245039">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="617" y="107" width="724" height="825" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592301245039" />
     <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1592226482197">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592226482197" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592247709368">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592301716685">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592247709368" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592301716685" />
   </component>
 </project>
