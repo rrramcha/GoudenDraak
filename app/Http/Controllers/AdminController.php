@@ -50,7 +50,7 @@ class AdminController extends Controller
 
         $validData = $request->validate([
             'item_name' => 'required',
-            'price' => 'required',
+            'price' => 'required|not_regex:/.*,.*/',
             'item_category' => 'required',
             'spiciness_scale' => 'required',
             'allergies' => ''
@@ -86,7 +86,7 @@ class AdminController extends Controller
     public function updateDish(MenuItem $menuItem, Request $request){
         $validData = $request->validate([
             'item_name' => 'required',
-            'price' => 'required',
+            'price' => 'required|regex:/[0-9]*\.[0-9]*/',
             'item_category' => 'required',
             'spiciness_scale' => 'required',
             'allergies' => ''

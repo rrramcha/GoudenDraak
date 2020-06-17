@@ -63,12 +63,12 @@
                             <option>3</option>
                         </select>
                         <small class="form-text text-muted"></small>
-                        <small class="text-danger">{{ $errors->first('price') }}</small>
+                        <small class="text-danger">{{ $errors->first('spiciness_scale') }}</small>
                     </div>
 
                     <div class="form-group">
                         <label for="allergies">Allergieën</label>
-                        <select class="form-control" id="allergies" name="allergies" multiple required>
+                        <select class="form-control" id="allergies" name="allergies" multiple>
                             @foreach($allergies as $allergy)
                                 <option value="{{ $allergy->id }}">{{ $allergy->name }}</option>
                             @endforeach
