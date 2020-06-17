@@ -53,6 +53,29 @@
                         </select>
                         <small class="text-danger">{{ $errors->first('item_category') }}</small>
                     </div>
+
+                    <div class="form-group">
+                        <label for="spiciness_scale">Pittigheid</label>
+                        <select class="form-control" id="spiciness_scale" name="spiciness_scale" required>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                        <small class="form-text text-muted"></small>
+                        <small class="text-danger">{{ $errors->first('spiciness_scale') }}</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="allergies">Allergieën</label>
+                        <select class="form-control" id="allergies" name="allergies" multiple>
+                            @foreach($allergies as $allergy)
+                                <option value="{{ $allergy->id }}">{{ $allergy->name }}</option>
+                            @endforeach
+                        </select>
+                        <small class="text-danger">{{ $errors->first('allergies') }}</small>
+                    </div>
+
                     <button type="submit" class="btn btn-success">Opslaan</button>
                 </form>
 

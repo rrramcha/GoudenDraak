@@ -13,27 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/menu', 'HomeController@showMenu')->name('menu');
-Route::get('/menu/download', 'HomeController@downloadMenu')->name('menu.download');
-Route::get('/contact', 'HomeController@showContact')->name('contact');
-Route::get('/news', 'HomeController@showNews')->name('news');
-Route::get('/getmenuitems', 'HomeController@getJSONMenu')->name('getmenuitems');
-Route::get('/getsalesdata', 'HomeController@getSalesData')->name('getsalesdata');
-Route::get('/gettransactions', 'HomeController@getJSONTransactions')->name('gettransactions');
+Route::get('/', 'MainController@index')->name('home');
+Route::get('/menu', 'MainController@showMenu')->name('menu');
+Route::get('/menu/download', 'MainController@downloadMenu')->name('menu.download');
+Route::get('/contact', 'MainController@showContact')->name('contact');
+Route::get('/news', 'MainController@showNews')->name('news');
+Route::get('/getmenuitems', 'MainController@getJSONMenu')->name('getmenuitems');
+Route::get('/getsalesdata', 'MainController@getSalesData')->name('getsalesdata');
+Route::get('/gettransactions', 'MainController@getJSONTransactions')->name('gettransactions');
 
 
 Route::prefix('kassa')->name('register.')->group(
     function () {
-        Route::get('', 'RegisterController@index')->name('overview');
-        Route::get('/login', 'RegisterController@login')->name('login');
-        Route::get('/sales', 'RegisterController@showSales')->name('sales');
+        Route::get('', 'RegisterController@index')->name('overview')->middleware('auth');
+        Route::get('/sales', 'RegisterController@showSales')->name('sales')->middleware('auth');
     }
 );
-Route::post('/sendorder', 'HomeController@sendOrder')->name('sendorder');
-Route::post('/repeatorder', 'HomeController@repeatOrder')->name('repeatorder');
+Route::post('/sendorder', 'MainController@sendOrder')->name('sendorder');
+Route::post('/repeatorder', 'MainController@repeatOrder')->name('repeatorder');
 
-Route::prefix('admin')->name('admin.')->group(
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(
     function () {
         Route::get('', 'AdminController@index')->name('overview');
         Route::get('/dishes', 'AdminController@dishOverview')->name('dish.overview');
@@ -44,3 +43,6 @@ Route::prefix('admin')->name('admin.')->group(
         Route::delete('/dishes/delete/{menuItem}', 'AdminController@deleteDish')->name('dish.delete');
     }
 );
+
+Auth::routes();
+
