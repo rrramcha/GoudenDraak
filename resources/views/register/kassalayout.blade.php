@@ -15,13 +15,10 @@
 <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
     <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Bestelling aanmaken<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{route('register.overview')}}">Bestelling aanmaken<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Sales</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="{{route('register.sales')}}">Sales</a>
         </li>
     </ul>
 </div>

@@ -19,11 +19,12 @@ Route::get('/menu/download', 'HomeController@downloadMenu')->name('menu.download
 Route::get('/contact', 'HomeController@showContact')->name('contact');
 Route::get('/news', 'HomeController@showNews')->name('news');
 Route::get('/getmenuitems', 'HomeController@getJSONMenu')->name('getmenuitems');
-
-Route::prefix('kassa')->name('register')->group(
+Route::get('/getsalesdata', 'HomeController@getSalesData')->name('getsalesdata');
+Route::prefix('kassa')->name('register.')->group(
     function () {
         Route::get('', 'RegisterController@index')->name('overview');
-        Route::get('/login', 'RegisterController@login')->name('');
+        Route::get('/login', 'RegisterController@login')->name('login');
+        Route::get('/sales', 'RegisterController@showSales')->name('sales');
     }
 );
 Route::post('/sendorder', 'HomeController@sendOrder')->name('sendorder');
