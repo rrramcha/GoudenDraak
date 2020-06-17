@@ -50,15 +50,19 @@ class AdminController extends Controller
 
         $validData = $request->validate([
             'item_name' => 'required',
-            'price' => 'required|regex:/[0-9]*\.[0-9]*/\'',
+            'price' => 'required|regex:/[0-9]*\.?[0-9]*/',
             'item_category' => 'required',
-            'spiciness_scale' => 'required|min:0|max:3',
+            'spiciness_scale' => 'required',
             'allergies' => ''
         ]);
+
         $allergies = [];
-        foreach ($request->input('allergies') as $allergy) {
-            $allergies[] = Allergy::find($allergy);
+        if($request->input('allergies') != null){
+            foreach ($request->input('allergies') as $allergy) {
+                $allergies[] = Allergy::find($allergy);
+            }
         }
+
 
         $number = ['menu_number' => MenuItem::max('menu_number')+1];
         $data = array_merge($validData, $number);
@@ -86,9 +90,9 @@ class AdminController extends Controller
     public function updateDish(MenuItem $menuItem, Request $request){
         $validData = $request->validate([
             'item_name' => 'required',
-            'price' => 'required|regex:/[0-9]*\.[0-9]*/',
+            'price' => 'required|regex:/[0-9]*\.?[0-9]*/',
             'item_category' => 'required',
-            'spiciness_scale' => 'required|min:0|max:3',
+            'spiciness_scale' => 'required',
             'allergies' => ''
         ]);
 
