@@ -2015,6 +2015,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2044,6 +2056,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       menuitems: [],
       orderitems: [],
+      tablenumber: 1,
+      totaltables: [1, 2, 3, 4, 5],
       comment: null,
       searchquery: ''
     };
@@ -2060,12 +2074,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     sendOrder: function sendOrder() {
-      axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
+      axios.post('/sendorder', [this.orderitems, this.comment, this.tablenumber]).then(function (response) {
         console.log(response.data);
       });
       this.orderitems = [];
       this.comment = '';
       alert('bestelling aangemaakt!');
+    },
+    deleteOrder: function deleteOrder() {
+      this.orderitems = [];
+      this.comment = '';
     },
     filterItem: function filterItem(item) {
       var fullnumber = '';
@@ -38768,6 +38786,42 @@ var render = function() {
           _c("h4", [_vm._v("Totaalprijs: € " + _vm._s(_vm.totalprice))]),
           _vm._v(" "),
           _c("label", [
+            _vm._v(" Tafelnummer:\n                    "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tablenumber,
+                    expression: "tablenumber"
+                  }
+                ],
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.tablenumber = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.totaltables, function(table) {
+                return _c("option", [_vm._v(_vm._s(table))])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("label", [
             _c("input", {
               directives: [
                 {
@@ -38796,8 +38850,19 @@ var render = function() {
               staticClass: "btn btn-sm btn-info",
               on: { click: _vm.sendOrder }
             },
-            [_vm._v("Bestelling Aanmaken")]
-          )
+            [_vm._v("Bestelling aanmaken")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm btn-danger mt-2",
+              on: { click: _vm.deleteOrder }
+            },
+            [_vm._v("Bestelling verwijderen")]
+          ),
+          _vm._v(" "),
+          _vm._m(2)
         ])
       ])
     ])
@@ -38850,6 +38915,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("h3", [_vm._v("Herhaalbestellingen: ")])
     ])
   }
 ]

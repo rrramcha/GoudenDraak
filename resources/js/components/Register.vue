@@ -75,10 +75,22 @@
                         </tbody>
                     </table>
                     <h4>Totaalprijs: € {{ totalprice }}</h4>
+                    <label> Tafelnummer:
+                        <select v-model="tablenumber">
+                            <option v-for="table in totaltables">{{table}}</option>
+                        </select>
+                    </label>
                     <label>
                         <input v-model="comment" placeholder="Notities">
                     </label>
-                    <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling Aanmaken</button>
+
+                    <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling aanmaken</button>
+                    <button  v-on:click="deleteOrder" class="btn btn-sm btn-danger mt-2">Bestelling verwijderen</button>
+
+                    <div class="card-body">
+                        <h3>Herhaalbestellingen: </h3>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,6 +109,8 @@
             return {
                 menuitems: [],
                 orderitems: [],
+                tablenumber: 1,
+                totaltables: [1, 2, 3, 4, 5],
                 comment: null,
                 searchquery: ''
             };
@@ -114,7 +128,7 @@
             },
 
             sendOrder(){
-                axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
+                axios.post('/sendorder', [this.orderitems, this.comment, this.tablenumber]).then(function (response) {
 
                     console.log(response.data);
 
@@ -122,6 +136,10 @@
                 this.orderitems = [];
                 this.comment = '';
                 alert('bestelling aangemaakt!');
+            },
+            deleteOrder(){
+                this.orderitems = [];
+                this.comment = '';
             },
             filterItem(item){
                 let fullnumber = '';
@@ -165,7 +183,7 @@
                 parseFloat(totalprice);
                 return totalprice;
             }
-        }
+        },
 
 
     }

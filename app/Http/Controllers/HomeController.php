@@ -106,8 +106,12 @@ class HomeController extends Controller
         if($data[1]){
             $comment = $data[1];
         }
+
         $transaction = Transaction::create([
-            'date'=>Carbon::now(), 'comment'=>$comment]);
+            'date'=>Carbon::now(),
+            'comment'=>$comment,
+            'table_number' => $data[2]
+        ]);
 
         $id = $transaction->id;
 
