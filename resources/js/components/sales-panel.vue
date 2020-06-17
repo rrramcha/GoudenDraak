@@ -34,6 +34,8 @@
         <div class="col-2">
             <div class="card">
                 <h3 class="card-body">Omzet: {{turnover}}</h3>
+                <h3 class="card-body">Btw: {{btwAmount}}</h3>
+                <h3 class="card-body">Omzet exclusief btw: {{turnoverExclusive}}</h3>
             </div>
         </div>
 
@@ -58,12 +60,12 @@
         },
 
         methods:{
-            calculateTurnover(){
-
-            },
-
-            getSales(){
-
+            roundMoney(money){
+                let shmoney = money;
+                shmoney = Math.round(shmoney*100)/100;
+                shmoney.toFixed(2);
+                parseFloat(shmoney);
+                return shmoney;
             }
         },
 
@@ -76,10 +78,16 @@
                 for(let x = 0; x < this.filteredData.length; x++){
                     turnover+=this.salesdata[x].price;
                 }
-                turnover = Math.round(turnover*100)/100;
+                /*turnover = Math.round(turnover*100)/100;
                 turnover.toFixed(2);
-                parseFloat(turnover);
-                return turnover;
+                parseFloat(turnover);*/
+                return this.roundMoney(turnover);
+            },
+            btwAmount(){
+                return this.roundMoney(this.turnover * 0.09);
+            },
+            turnoverExclusive(){
+                return this.roundMoney(this.turnover * 0.91);
             }
         }
     }

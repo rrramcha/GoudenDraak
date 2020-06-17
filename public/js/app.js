@@ -2015,6 +2015,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2044,15 +2055,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       menuitems: [],
       orderitems: [],
-      totalprice: 0.0,
       comment: null,
-      searchquery: ''
+      searchquery: '',
+      transactions: []
     };
   },
   methods: {
     addMenuItem: function addMenuItem(item) {
       this.orderitems.push(item);
-      this.updatePrice();
     },
     removeMenuItem: function removeMenuItem(item) {
       var index = this.orderitems.indexOf(item);
@@ -2060,19 +2070,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (index > -1) {
         this.orderitems.splice(index, 1);
       }
-
-      this.updatePrice();
-    },
-    updatePrice: function updatePrice() {
-      this.totalprice = 0;
-
-      for (var x = 0; x < this.orderitems.length; x++) {
-        this.totalprice += this.orderitems[x].price;
-      }
-
-      this.totalprice = Math.round(this.totalprice * 100) / 100;
-      this.totalprice.toFixed(2);
-      parseFloat(this.totalprice);
     },
     sendOrder: function sendOrder() {
       axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
@@ -2080,8 +2077,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
       this.orderitems = [];
       this.comment = '';
-      this.updatePrice();
       alert('bestelling aangemaakt!');
+    },
+    deleteOrder: function deleteOrder() {
+      this.orderitems = [];
     },
     filterItem: function filterItem(item) {
       var fullnumber = '';
@@ -2114,6 +2113,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return _this2.filterItem(item);
         });
       }
+    },
+    totalprice: function totalprice() {
+      var totalprice = 0;
+
+      for (var x = 0; x < this.orderitems.length; x++) {
+        totalprice += this.orderitems[x].price;
+      }
+
+      totalprice = Math.round(totalprice * 100) / 100;
+      totalprice.toFixed(2);
+      parseFloat(totalprice);
+      return totalprice;
     }
   }
 });
@@ -2137,6 +2148,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -2213,8 +2226,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
-    calculateTurnover: function calculateTurnover() {},
-    getSales: function getSales() {}
+    roundMoney: function roundMoney(money) {
+      var shmoney = money;
+      shmoney = Math.round(shmoney * 100) / 100;
+      shmoney.toFixed(2);
+      parseFloat(shmoney);
+      return shmoney;
+    }
   },
   computed: {
     filteredData: function filteredData() {
@@ -2230,11 +2248,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       for (var x = 0; x < this.filteredData.length; x++) {
         turnover += this.salesdata[x].price;
       }
-
-      turnover = Math.round(turnover * 100) / 100;
+      /*turnover = Math.round(turnover*100)/100;
       turnover.toFixed(2);
-      parseFloat(turnover);
-      return turnover;
+      parseFloat(turnover);*/
+
+
+      return this.roundMoney(turnover);
+    },
+    btwAmount: function btwAmount() {
+      return this.roundMoney(this.turnover * 0.09);
+    },
+    turnoverExclusive: function turnoverExclusive() {
+      return this.roundMoney(this.turnover * 0.91);
     }
   }
 });
@@ -38788,6 +38813,36 @@ var render = function() {
               on: { click: _vm.sendOrder }
             },
             [_vm._v("Bestelling Aanmaken")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm btn-danger mt-1",
+              on: { click: _vm.deleteOrder }
+            },
+            [_vm._v("Bestelling verwijderen")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("h4", [_vm._v("Herhaalbestellingen: ")]),
+              _vm._v(" "),
+              _vm._l(_vm.transactions, function(transaction) {
+                return _c("ul", [
+                  _c("li", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(transaction) +
+                        "\n                        "
+                    )
+                  ])
+                ])
+              })
+            ],
+            2
           )
         ])
       ])
@@ -38959,6 +39014,14 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _c("h3", { staticClass: "card-body" }, [
           _vm._v("Omzet: " + _vm._s(_vm.turnover))
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "card-body" }, [
+          _vm._v("Btw: " + _vm._s(_vm.btwAmount))
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "card-body" }, [
+          _vm._v("Omzet exclusief btw: " + _vm._s(_vm.turnoverExclusive))
         ])
       ])
     ])

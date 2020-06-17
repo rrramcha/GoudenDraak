@@ -79,7 +79,18 @@
                         <input v-model="comment" placeholder="Notities">
                     </label>
                     <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling Aanmaken</button>
+                    <button  v-on:click="deleteOrder" class="btn btn-sm btn-danger mt-1">Bestelling verwijderen</button>
+
+                    <div class="card-body">
+                        <h4>Herhaalbestellingen: </h4>
+                        <ul v-for="transaction in transactions">
+                            <li>
+                                {{transaction}}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -97,15 +108,14 @@
             return {
                 menuitems: [],
                 orderitems: [],
-                totalprice: 0.0,
                 comment: null,
-                searchquery: ''
+                searchquery: '',
+                transactions: []
             };
         },
         methods: {
             addMenuItem(item){
                 this.orderitems.push(item);
-                this.updatePrice();
             },
 
             removeMenuItem(item){
@@ -113,17 +123,6 @@
                 if (index > -1) {
                     this.orderitems.splice(index, 1);
                 }
-                this.updatePrice();
-            },
-
-            updatePrice(){
-                this.totalprice = 0;
-                for(let x = 0; x < this.orderitems.length; x++){
-                    this.totalprice+=this.orderitems[x].price;
-                }
-                this.totalprice = Math.round(this.totalprice*100)/100;
-                this.totalprice.toFixed(2);
-                parseFloat(this.totalprice);
             },
 
             sendOrder(){
@@ -134,9 +133,12 @@
                 });
                 this.orderitems = [];
                 this.comment = '';
-                this.updatePrice();
                 alert('bestelling aangemaakt!');
             },
+            deleteOrder(){
+                this.orderitems = [];
+            },
+
             filterItem(item){
                 let fullnumber = '';
                 if(item.menu_prefix){
@@ -156,7 +158,8 @@
                 }
 
                 return false;
-            }
+            },
+
         },
 
         computed:{
@@ -168,6 +171,16 @@
                     return this.menuitems.filter(item => this.filterItem(item));
                 }
 
+            },
+            totalprice(){
+                let totalprice = 0;
+                for(let x = 0; x < this.orderitems.length; x++){
+                    totalprice+=this.orderitems[x].price;
+                }
+                totalprice = Math.round(totalprice*100)/100;
+                totalprice.toFixed(2);
+                parseFloat(totalprice);
+                return totalprice;
             }
         }
 
