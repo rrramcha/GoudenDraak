@@ -2084,7 +2084,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       alert('bestelling aangemaakt!');
     },
     filterItem: function filterItem(item) {
-      if (item.item_name.toLowerCase().includes(this.searchquery.toLowerCase()) || item.item_category.toLowerCase().includes(this.searchquery.toLowerCase()) || item.menu_number.toString().toLowerCase().includes(this.searchquery.toLowerCase())) {
+      var fullnumber = '';
+
+      if (item.menu_prefix) {
+        fullnumber += item.menu_prefix.toString();
+      }
+
+      fullnumber += item.menu_number.toString();
+
+      if (item.menu_suffix) {
+        fullnumber += item.menu_suffix.toString();
+      }
+
+      if (item.item_name.toLowerCase().includes(this.searchquery.toLowerCase()) || item.item_category.toLowerCase().includes(this.searchquery.toLowerCase()) || fullnumber.toLowerCase().includes(this.searchquery.toLowerCase())) {
         return true;
       }
 
