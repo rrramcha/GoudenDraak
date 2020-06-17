@@ -20,6 +20,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('register.sales')}}">Sales</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.overview')}}">Admin</a>
+        </li>
     </ul>
 </div>
 </nav>

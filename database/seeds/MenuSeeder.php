@@ -17,7 +17,8 @@ class MenuSeeder extends Seeder
             'menu_number' => 1,
             'item_name' => 'Soep Ling Fa',
             'price' => 3.8,
-            'item_category' => 'Soep'
+            'item_category' => 'Soep',
+            'spiciness_scale'=> 1
         ]);
         DB::table('menu')->insert([
             'menu_number' => 2,
@@ -29,25 +30,29 @@ class MenuSeeder extends Seeder
             'menu_number' => 3,
             'item_name' => 'Tomatensoep',
             'price' => 2.9,
-            'item_category' => 'Soep'
+            'item_category' => 'Soep',
+            'spiciness_scale'=> 2
         ]);
         DB::table('menu')->insert([
             'menu_number' => 4,
             'item_name' => 'Haaienvinnensoep',
             'price' => 3.1,
-            'item_category' => 'Soep'
+            'item_category' => 'Soep',
+            'spiciness_scale'=> 3
         ]);
         DB::table('menu')->insert([
             'menu_number' => 5,
             'item_name' => 'Champignonsoep',
             'price' => 3.3,
-            'item_category' => 'Soep'
+            'item_category' => 'Soep',
+            'spiciness_scale'=> 1
         ]);
         DB::table('menu')->insert([
             'menu_number' => 6,
             'item_name' => 'Pekingsoep',
             'price' => 3.8,
-            'item_category' => 'Soep'
+            'item_category' => 'Soep',
+            'spiciness_scale'=> 3
         ]);
         DB::table('menu')->insert([
             'menu_number' => 7,
@@ -76,19 +81,22 @@ class MenuSeeder extends Seeder
             'item_name' => 'Loempia Compleet',
             'description' => 'met gesmoord rundvlees en pikante saus',
             'price' => 6.2,
-            'item_category' => 'Voorgerechten'
+            'item_category' => 'Voorgerechten',
+            'spiciness_scale'=> 2
         ]);
         DB::table('menu')->insert([
             'menu_number' => 12,
             'item_name' => 'Loempia met kip',
             'price' => 3.9,
-            'item_category' => 'Voorgerechten'
+            'item_category' => 'Voorgerechten',
+            'spiciness_scale'=> 1
         ]);
         DB::table('menu')->insert([
             'menu_number' => 13,
             'item_name' => 'Loempia',
             'price' => 3.8,
-            'item_category' => 'Voorgerechten'
+            'item_category' => 'Voorgerechten',
+            'spiciness_scale'=> 1
         ]);
         DB::table('menu')->insert([
             'menu_number' => 14,

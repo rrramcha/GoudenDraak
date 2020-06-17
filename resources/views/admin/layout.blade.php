@@ -18,7 +18,7 @@
                 <a class="nav-link" href={{route('admin.dish.overview')}}>Gerechten<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sales</a>
+                <a class="nav-link" href="{{route('register.sales')}}">Sales</a>
             </li>
         </ul>
     </div>

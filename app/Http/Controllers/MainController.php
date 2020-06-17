@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use PHPUnit\Util\Json;
 use function MongoDB\BSON\toJSON;
 
-class wMainController extends Controller
+class MainController extends Controller
 {
     /**
      * Display a listing of the resource.
