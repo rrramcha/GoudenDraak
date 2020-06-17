@@ -84,24 +84,20 @@
                         <input v-model="comment" placeholder="Notities">
                     </label>
 
-                    <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling aanmaken</button>
-                    <button  v-on:click="deleteOrder" class="btn btn-sm btn-danger mt-2">Bestelling verwijderen</button>
+                    <button  v-on:click="sendOrder" class="btn btn-sm btn-outline-dark">Bestelling aanmaken</button>
+                    <button  v-on:click="deleteOrder" class="btn btn-sm btn-dark mt-2">Bestelling verwijderen</button>
 
                     <div class="card-body">
                         <h3>Herhaalbestellingen: </h3>
                         <ul v-for="order in orderHistory">
-                            <li>{{order}}</li>
+                            <li>
+                                <b>Order ID:</b> {{order.id}}<br>
+                                <b>Tafel No:</b> {{order.table_number}}<br>
+                                <b>Besteltijd:</b> {{order.date}}<br>
+                                <button v-on:click="repeatOrder(order.id)" class="btn btn-sm btn-success">Nogmaals bestellen</button>
+                            </li>
+
                         </ul>
-                        <table v-for="order in orderHistory">
-                            <tr>
-                                <td>
-                                    {{order.id}}
-                                </td>
-                                <td>
-                                    {{order.id}}
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -115,6 +111,7 @@
             const response = await axios.get('/getmenuitems');
 
             this.menuitems = response.data;
+            this.getOrderHistory();
         },
 
         data () {
@@ -140,6 +137,10 @@
                 }
             },
 
+            onlyUnique(value, index, self) {
+                return self.indexOf(value) === index;
+            },
+
             sendOrder(){
                 axios.post('/sendorder', [this.orderitems, this.comment, this.tablenumber]).then(function (response) {
 
@@ -148,7 +149,7 @@
                 });
                 this.orderitems = [];
                 this.comment = '';
-                alert('bestelling aangemaakt!');
+                alert('Bestelling aangemaakt!');
                 this.getOrderHistory();
             },
             deleteOrder(){
@@ -176,10 +177,20 @@
                 return false;
             },
             async getOrderHistory() {
-                const response = await axios.get('/getsalesdata');
+                const response = await axios.get('/gettransactions');
 
                 this.orderData = response.data;
+            },
+
+            repeatOrder(TransactionID){
+                let self = this;
+                axios.post('/repeatorder', [TransactionID]).then(function (response) {
+                self.orderitems = response.data;
+                console.log(response.data);
+                }
+                );
             }
+
         },
 
         computed:{
@@ -206,6 +217,9 @@
             orderHistory(){
                 return this.orderData.filter(e => e.table_number === Number(this.tablenumber));
             }
+
+
+
         },
 
 

@@ -2035,10 +2035,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2056,7 +2052,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               response = _context.sent;
               _this.menuitems = response.data;
 
-            case 4:
+              _this.getOrderHistory();
+
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2086,13 +2084,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.orderitems.splice(index, 1);
       }
     },
+    onlyUnique: function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+    },
     sendOrder: function sendOrder() {
       axios.post('/sendorder', [this.orderitems, this.comment, this.tablenumber]).then(function (response) {
         console.log(response.data);
       });
       this.orderitems = [];
       this.comment = '';
-      alert('bestelling aangemaakt!');
+      alert('Bestelling aangemaakt!');
       this.getOrderHistory();
     },
     deleteOrder: function deleteOrder() {
@@ -2128,7 +2129,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get('/getsalesdata');
+                return axios.get('/gettransactions');
 
               case 2:
                 response = _context2.sent;
@@ -2141,6 +2142,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }))();
+    },
+    repeatOrder: function repeatOrder(TransactionID) {
+      var self = this;
+      axios.post('/repeatorder', [TransactionID]).then(function (response) {
+        self.orderitems = response.data;
+        console.log(response.data);
+      });
     }
   },
   computed: {
@@ -38892,7 +38900,7 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-sm btn-info",
+              staticClass: "btn btn-sm btn-outline-dark",
               on: { click: _vm.sendOrder }
             },
             [_vm._v("Bestelling aanmaken")]
@@ -38901,7 +38909,7 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-sm btn-danger mt-2",
+              staticClass: "btn btn-sm btn-dark mt-2",
               on: { click: _vm.deleteOrder }
             },
             [_vm._v("Bestelling verwijderen")]
@@ -38914,27 +38922,32 @@ var render = function() {
               _c("h3", [_vm._v("Herhaalbestellingen: ")]),
               _vm._v(" "),
               _vm._l(_vm.orderHistory, function(order) {
-                return _c("ul", [_c("li", [_vm._v(_vm._s(order))])])
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.orderHistory, function(order) {
-                return _c("table", [
-                  _c("tr", [
-                    _c("td", [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(order.id) +
-                          "\n                            "
-                      )
-                    ]),
+                return _c("ul", [
+                  _c("li", [
+                    _c("b", [_vm._v("Order ID:")]),
+                    _vm._v(" " + _vm._s(order.id)),
+                    _c("br"),
                     _vm._v(" "),
-                    _c("td", [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(order.id) +
-                          "\n                            "
-                      )
-                    ])
+                    _c("b", [_vm._v("Tafel No:")]),
+                    _vm._v(" " + _vm._s(order.table_number)),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("b", [_vm._v("Besteltijd:")]),
+                    _vm._v(" " + _vm._s(order.date)),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-success",
+                        on: {
+                          click: function($event) {
+                            return _vm.repeatOrder(order.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Nogmaals bestellen")]
+                    )
                   ])
                 ])
               })
@@ -51532,8 +51545,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
