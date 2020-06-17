@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Util\Json;
+use function MongoDB\BSON\toJSON;
 
 class HomeController extends Controller
 {
@@ -85,10 +86,7 @@ class HomeController extends Controller
     }
 
     public function GetJSONMenu(){
-        $menuItems = MenuItem::all();
-        $itemCategories = ItemCategory::all();
-
-        return $menuItems->toJson();
+        return MenuItem::all()->toJSON();
     }
 
     public function getSalesData(){
@@ -102,9 +100,16 @@ class HomeController extends Controller
 
     public function sendOrder(Request $request){
         $data = $request->all();
+        $comment = '';
+        if($data[1]){
+            $comment = $data[1];
+        }
 
         $transaction = Transaction::create([
-            'date'=>Carbon::now(), 'comment'=>$data[1]]);
+            'date'=>Carbon::now(),
+            'comment'=>$comment,
+            'table_number' => $data[2]
+        ]);
 
         $id = $transaction->id;
 
@@ -117,5 +122,17 @@ class HomeController extends Controller
         }
 
         return response()->json($data);
+    }
+
+    public function getJSONTransactions(){
+        return Transaction::all()->toJSON();
+    }
+
+    public function repeatOrder(Request $request){
+        $items = DB::table('menu')
+            ->join('transactions_items', 'item_id', '=', 'menu.id')->where('transaction_id', $request[0])
+            ->get();
+        
+        return $items;
     }
 }

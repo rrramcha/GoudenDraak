@@ -20,6 +20,9 @@ Route::get('/contact', 'HomeController@showContact')->name('contact');
 Route::get('/news', 'HomeController@showNews')->name('news');
 Route::get('/getmenuitems', 'HomeController@getJSONMenu')->name('getmenuitems');
 Route::get('/getsalesdata', 'HomeController@getSalesData')->name('getsalesdata');
+Route::get('/gettransactions', 'HomeController@getJSONTransactions')->name('gettransactions');
+
+
 Route::prefix('kassa')->name('register.')->group(
     function () {
         Route::get('', 'RegisterController@index')->name('overview');
@@ -28,6 +31,7 @@ Route::prefix('kassa')->name('register.')->group(
     }
 );
 Route::post('/sendorder', 'HomeController@sendOrder')->name('sendorder');
+Route::post('/repeatorder', 'HomeController@repeatOrder')->name('repeatorder');
 
 Route::prefix('admin')->name('admin.')->group(
     function () {

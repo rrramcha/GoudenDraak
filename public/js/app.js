@@ -2015,6 +2015,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2032,7 +2052,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               response = _context.sent;
               _this.menuitems = response.data;
 
-            case 4:
+              _this.getOrderHistory();
+
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2044,15 +2066,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       menuitems: [],
       orderitems: [],
-      totalprice: 0.0,
+      tablenumber: 1,
+      totaltables: [1, 2, 3, 4, 5],
       comment: null,
-      searchquery: ''
+      searchquery: '',
+      orderData: []
     };
   },
   methods: {
     addMenuItem: function addMenuItem(item) {
       this.orderitems.push(item);
-      this.updatePrice();
     },
     removeMenuItem: function removeMenuItem(item) {
       var index = this.orderitems.indexOf(item);
@@ -2060,28 +2083,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (index > -1) {
         this.orderitems.splice(index, 1);
       }
-
-      this.updatePrice();
     },
-    updatePrice: function updatePrice() {
-      this.totalprice = 0;
-
-      for (var x = 0; x < this.orderitems.length; x++) {
-        this.totalprice += this.orderitems[x].price;
-      }
-
-      this.totalprice = Math.round(this.totalprice * 100) / 100;
-      this.totalprice.toFixed(2);
-      parseFloat(this.totalprice);
+    onlyUnique: function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
     },
     sendOrder: function sendOrder() {
-      axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
+      axios.post('/sendorder', [this.orderitems, this.comment, this.tablenumber]).then(function (response) {
         console.log(response.data);
       });
       this.orderitems = [];
       this.comment = '';
-      this.updatePrice();
-      alert('bestelling aangemaakt!');
+      alert('Bestelling aangemaakt!');
+      this.getOrderHistory();
+    },
+    deleteOrder: function deleteOrder() {
+      this.orderitems = [];
+      this.comment = '';
     },
     filterItem: function filterItem(item) {
       var fullnumber = '';
@@ -2101,19 +2118,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return false;
+    },
+    getOrderHistory: function getOrderHistory() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.get('/gettransactions');
+
+              case 2:
+                response = _context2.sent;
+                _this2.orderData = response.data;
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    repeatOrder: function repeatOrder(TransactionID) {
+      var self = this;
+      axios.post('/repeatorder', [TransactionID]).then(function (response) {
+        self.orderitems = response.data;
+        console.log(response.data);
+      });
     }
   },
   computed: {
     filteredItems: function filteredItems() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.searchquery === '') {
         return this.menuitems;
       } else {
         return this.menuitems.filter(function (item) {
-          return _this2.filterItem(item);
+          return _this3.filterItem(item);
         });
       }
+    },
+    totalprice: function totalprice() {
+      var totalprice = 0;
+
+      for (var x = 0; x < this.orderitems.length; x++) {
+        totalprice += this.orderitems[x].price;
+      }
+
+      totalprice = Math.round(totalprice * 100) / 100;
+      totalprice.toFixed(2);
+      parseFloat(totalprice);
+      return totalprice;
+    },
+    orderHistory: function orderHistory() {
+      var _this4 = this;
+
+      return this.orderData.filter(function (e) {
+        return e.table_number === Number(_this4.tablenumber);
+      });
     }
   }
 });
@@ -2137,6 +2204,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -2213,8 +2282,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
-    calculateTurnover: function calculateTurnover() {},
-    getSales: function getSales() {}
+    roundMoney: function roundMoney(money) {
+      var shmoney = money;
+      shmoney = Math.round(shmoney * 100) / 100;
+      shmoney.toFixed(2);
+      parseFloat(shmoney);
+      return shmoney;
+    }
   },
   computed: {
     filteredData: function filteredData() {
@@ -2235,6 +2309,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       turnover.toFixed(2);
       parseFloat(turnover);
       return turnover;
+    },
+    btwAmount: function btwAmount() {
+      return this.roundMoney(this.turnover * 0.09);
+    },
+    turnoverExclusive: function turnoverExclusive() {
+      return this.roundMoney(this.turnover * 0.91);
     }
   }
 });
@@ -38638,7 +38718,7 @@ var render = function() {
                 expression: "searchquery"
               }
             ],
-            attrs: { type: "text" },
+            attrs: { type: "text", placeholder: "Zoek een gerecht" },
             domProps: { value: _vm.searchquery },
             on: {
               input: function($event) {
@@ -38759,6 +38839,42 @@ var render = function() {
           _c("h4", [_vm._v("Totaalprijs: € " + _vm._s(_vm.totalprice))]),
           _vm._v(" "),
           _c("label", [
+            _vm._v(" Tafelnummer:\n                    "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tablenumber,
+                    expression: "tablenumber"
+                  }
+                ],
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.tablenumber = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.totaltables, function(table) {
+                return _c("option", [_vm._v(_vm._s(table))])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("label", [
             _c("input", {
               directives: [
                 {
@@ -38784,10 +38900,59 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-sm btn-info",
+              staticClass: "btn btn-sm btn-outline-dark",
               on: { click: _vm.sendOrder }
             },
-            [_vm._v("Bestelling Aanmaken")]
+            [_vm._v("Bestelling aanmaken")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm btn-dark mt-2",
+              on: { click: _vm.deleteOrder }
+            },
+            [_vm._v("Bestelling verwijderen")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("h3", [_vm._v("Herhaalbestellingen: ")]),
+              _vm._v(" "),
+              _vm._l(_vm.orderHistory, function(order) {
+                return _c("ul", [
+                  _c("li", [
+                    _c("b", [_vm._v("Order ID:")]),
+                    _vm._v(" " + _vm._s(order.id)),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("b", [_vm._v("Tafel No:")]),
+                    _vm._v(" " + _vm._s(order.table_number)),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("b", [_vm._v("Besteltijd:")]),
+                    _vm._v(" " + _vm._s(order.date)),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-success",
+                        on: {
+                          click: function($event) {
+                            return _vm.repeatOrder(order.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Nogmaals bestellen")]
+                    )
+                  ])
+                ])
+              })
+            ],
+            2
           )
         ])
       ])
@@ -38866,7 +39031,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-10" }, [
+    _c("div", { staticClass: "col-9" }, [
       _c("label", [
         _vm._v(" Vanaf\n            "),
         _c("input", {
@@ -38955,10 +39120,18 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-2" }, [
+    _c("div", { staticClass: "col-3" }, [
       _c("div", { staticClass: "card" }, [
         _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Omzet: " + _vm._s(_vm.turnover))
+          _vm._v("Omzet: €" + _vm._s(_vm.turnover))
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "card-body" }, [
+          _vm._v("BTW: €" + _vm._s(_vm.btwAmount))
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "card-body" }, [
+          _vm._v("Omzet excl BTW: €" + _vm._s(_vm.turnoverExclusive))
         ])
       ])
     ])
@@ -51220,15 +51393,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!**********************************************!*\
   !*** ./resources/js/components/Register.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Register.vue?vue&type=template&id=97358ae4&scoped=true& */ "./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&");
 /* harmony import */ var _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Register.vue?vue&type=script&lang=js& */ "./resources/js/components/Register.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -51258,7 +51430,7 @@ component.options.__file = "resources/js/components/Register.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/Register.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51373,8 +51545,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Raj\Documents\School\Jaar 2\Blok 4\WebFS\GitJo\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\GoudenDraak\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
