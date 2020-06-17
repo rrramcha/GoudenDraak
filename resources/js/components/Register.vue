@@ -97,7 +97,6 @@
             return {
                 menuitems: [],
                 orderitems: [],
-                totalprice: 0.0,
                 comment: null,
                 searchquery: ''
             };
@@ -105,7 +104,6 @@
         methods: {
             addMenuItem(item){
                 this.orderitems.push(item);
-                this.updatePrice();
             },
 
             removeMenuItem(item){
@@ -113,17 +111,6 @@
                 if (index > -1) {
                     this.orderitems.splice(index, 1);
                 }
-                this.updatePrice();
-            },
-
-            updatePrice(){
-                this.totalprice = 0;
-                for(let x = 0; x < this.orderitems.length; x++){
-                    this.totalprice+=this.orderitems[x].price;
-                }
-                this.totalprice = Math.round(this.totalprice*100)/100;
-                this.totalprice.toFixed(2);
-                parseFloat(this.totalprice);
             },
 
             sendOrder(){
@@ -134,7 +121,6 @@
                 });
                 this.orderitems = [];
                 this.comment = '';
-                this.updatePrice();
                 alert('bestelling aangemaakt!');
             },
             filterItem(item){
@@ -168,6 +154,16 @@
                     return this.menuitems.filter(item => this.filterItem(item));
                 }
 
+            },
+            totalprice(){
+                var totalprice = 0;
+                for (var x = 0; x < this.orderitems.length; x++) {
+                    totalprice += this.orderitems[x].price;
+                }
+                totalprice = Math.round(totalprice * 100) / 100;
+                totalprice.toFixed(2);
+                parseFloat(totalprice);
+                return totalprice;
             }
         }
 
