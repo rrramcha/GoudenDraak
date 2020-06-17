@@ -10,6 +10,8 @@
                 <tr>
                     <th>Menunummer</th>
                     <th>Naam</th>
+                    <th>Allergieën</th>
+                    <th>Pittigheid</th>
                     <th>Prijs</th>
                     <th></th>
                 </tr>
@@ -37,10 +39,25 @@
                                 @if($item->description)
                                     <span style="color: #e6e0ae">({{$item->description}})</span>
                                 @endif
-                                @if($item->allergies)
-                                    <br>
-                                    <h1>{{$item->allergies}}</h1>
-                                    @endif
+                            </td>
+
+                            <td>
+                                <ul style="padding: 0;">
+                                    @foreach($item->allergies as $allergy)
+                                        <li>{{$allergy->name}}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td>
+                                @php
+                                    $output_scale = $item->spiciness_scale;
+                                    if($output_scale > 3)
+                                    $output_scale = 3;
+                                @endphp
+                                @for ($i = 0; $i < $output_scale ; $i++)
+                                    ⏺
+                                @endfor
+
                             </td>
 
                             <td>
