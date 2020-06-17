@@ -74,7 +74,7 @@
                         </tbody>
                     </table>
                     <h4>Totaalprijs: € {{ totalprice }}</h4>
-                    <label> 
+                    <label>
                         <input v-model="comment" placeholder="Notities">
                     </label>
                     <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling Aanmaken</button>
@@ -133,6 +133,7 @@
                 this.orderitems = [];
                 this.comment = '';
                 this.updatePrice();
+                alert('bestelling aangemaakt!');
             }
         }
 

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use PHPUnit\Util\Json;
 
 class HomeController extends Controller
@@ -88,6 +89,15 @@ class HomeController extends Controller
         $itemCategories = ItemCategory::all();
 
         return $menuItems->toJson();
+    }
+
+    public function getSalesData(){
+        $items = DB::table('transactions_items')
+            ->join('menu', 'item_id', '=', 'menu.id')
+            ->join('transactions', 'transaction_id', '=', 'transactions.id')
+            ->get();
+
+        return $items;
     }
 
     public function sendOrder(Request $request){

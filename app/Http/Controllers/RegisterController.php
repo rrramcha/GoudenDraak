@@ -42,4 +42,9 @@ class RegisterController extends Controller
         $grouped = $menuItems->groupBy('item_category');
         return $menuItems;
     }
+
+    public function showSales(){
+
+        return view('register.sales');
+    }
 }
