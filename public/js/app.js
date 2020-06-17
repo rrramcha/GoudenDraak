@@ -2192,6 +2192,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "sales-panel",
   data: function data() {
@@ -38921,7 +38925,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-10" }, [
+    _c("div", { staticClass: "col-9" }, [
       _c("label", [
         _vm._v(" Vanaf\n            "),
         _c("input", {
@@ -39001,6 +39005,14 @@ var render = function() {
                       _vm._s(item.date) +
                       "\n                    "
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                        €" +
+                      _vm._s(item.price) +
+                      "\n                    "
+                  )
                 ])
               ])
             ])
@@ -39010,18 +39022,18 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-2" }, [
+    _c("div", { staticClass: "col-3" }, [
       _c("div", { staticClass: "card" }, [
         _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Omzet: " + _vm._s(_vm.turnover))
+          _vm._v("Omzet: €" + _vm._s(_vm.turnover))
         ]),
         _vm._v(" "),
         _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Btw: " + _vm._s(_vm.btwAmount))
+          _vm._v("Btw: €" + _vm._s(_vm.btwAmount))
         ]),
         _vm._v(" "),
         _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Omzet exclusief btw: " + _vm._s(_vm.turnoverExclusive))
+          _vm._v("Omzet exclusief btw: €" + _vm._s(_vm.turnoverExclusive))
         ])
       ])
     ])
@@ -39038,7 +39050,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Product")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Datum")])
+        _c("th", [_vm._v("Datum")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Prijs")])
       ])
     ])
   }
