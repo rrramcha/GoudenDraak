@@ -74,6 +74,9 @@
                         </tbody>
                     </table>
                     <h4>Totaalprijs: € {{ totalprice }}</h4>
+                    <label> Notities:
+                        <input v-model="comment" placeholder="edit me">
+                    </label>
                     <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling Aanmaken</button>
                 </div>
             </div>
@@ -122,7 +125,7 @@
             },
 
             sendOrder(){
-                axios.post('/sendorder', this.orderitems).then(function (response) {
+                axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
 
                     console.log(response.data);
 

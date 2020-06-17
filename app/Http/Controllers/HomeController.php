@@ -94,11 +94,11 @@ class HomeController extends Controller
         $data = $request->all();
 
         $transaction = Transaction::create([
-            'date'=>Carbon::now(), 'comment'=>'a']);
+            'date'=>Carbon::now(), 'comment'=>$data[1]]);
 
         $id = $transaction->id;
 
-        foreach($data as $item)
+        foreach($data[0] as $item)
         {
             TransactionItem::create([
                 'transaction_id' => $id,
