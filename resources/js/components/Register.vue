@@ -3,6 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-7">
+                    <input v-model="searchquery" type="text">
                     <table class="table">
                         <thead>
                             <tr>
@@ -20,7 +21,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody v-for="item in menuitems" :key="item.id">
+                        <tbody v-for="item in filteredItems" :key="item.id">
                             <tr>
                                 <td>
                                     {{ item.menu_prefix }}
@@ -97,7 +98,8 @@
                 menuitems: [],
                 orderitems: [],
                 totalprice: 0.0,
-                comment: null
+                comment: null,
+                searchquery: ''
             };
         },
         methods: {
@@ -134,6 +136,28 @@
                 this.comment = '';
                 this.updatePrice();
                 alert('bestelling aangemaakt!');
+            },
+            filterItem(item){
+                if(item.item_name.toLowerCase().includes(this.searchquery.toLowerCase()) ||
+                    item.item_category.toLowerCase().includes(this.searchquery.toLowerCase()) ||
+                    item.menu_number.toString().toLowerCase().includes(this.searchquery.toLowerCase())
+                ) {
+                    return true;
+                }
+                
+                return false;
+            }
+        },
+
+        computed:{
+            filteredItems(){
+                if(this.searchquery === ''){
+                    return this.menuitems;
+                } else {
+
+                    return this.menuitems.filter(item => this.filterItem(item));
+                }
+
             }
         }
 

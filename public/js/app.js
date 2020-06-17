@@ -2014,6 +2014,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2044,7 +2045,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       menuitems: [],
       orderitems: [],
       totalprice: 0.0,
-      comment: null
+      comment: null,
+      searchquery: ''
     };
   },
   methods: {
@@ -2080,6 +2082,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.comment = '';
       this.updatePrice();
       alert('bestelling aangemaakt!');
+    },
+    filterItem: function filterItem(item) {
+      if (item.item_name.toLowerCase().includes(this.searchquery.toLowerCase()) || item.item_category.toLowerCase().includes(this.searchquery.toLowerCase()) || item.menu_number.toString().toLowerCase().includes(this.searchquery.toLowerCase())) {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  computed: {
+    filteredItems: function filteredItems() {
+      var _this2 = this;
+
+      if (this.searchquery === '') {
+        return this.menuitems;
+      } else {
+        return this.menuitems.filter(function (item) {
+          return _this2.filterItem(item);
+        });
+      }
     }
   }
 });
@@ -38595,13 +38617,34 @@ var render = function() {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-7" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.searchquery,
+                expression: "searchquery"
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.searchquery },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.searchquery = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
           _c(
             "table",
             { staticClass: "table" },
             [
               _vm._m(0),
               _vm._v(" "),
-              _vm._l(_vm.menuitems, function(item) {
+              _vm._l(_vm.filteredItems, function(item) {
                 return _c("tbody", { key: item.id }, [
                   _c("tr", [
                     _c("td", [
