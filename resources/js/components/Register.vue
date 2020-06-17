@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-7">
-                    <input v-model="searchquery" type="text">
+                    <input v-model="searchquery" type="text" placeholder="Zoek een gerecht">
                     <table class="table">
                         <thead>
                             <tr>
@@ -89,7 +89,19 @@
 
                     <div class="card-body">
                         <h3>Herhaalbestellingen: </h3>
-
+                        <ul v-for="order in orderHistory">
+                            <li>{{order}}</li>
+                        </ul>
+                        <table v-for="order in orderHistory">
+                            <tr>
+                                <td>
+                                    {{order.id}}
+                                </td>
+                                <td>
+                                    {{order.id}}
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -112,7 +124,8 @@
                 tablenumber: 1,
                 totaltables: [1, 2, 3, 4, 5],
                 comment: null,
-                searchquery: ''
+                searchquery: '',
+                orderData: []
             };
         },
         methods: {
@@ -136,6 +149,7 @@
                 this.orderitems = [];
                 this.comment = '';
                 alert('bestelling aangemaakt!');
+                this.getOrderHistory();
             },
             deleteOrder(){
                 this.orderitems = [];
@@ -160,6 +174,11 @@
                 }
 
                 return false;
+            },
+            async getOrderHistory() {
+                const response = await axios.get('/getsalesdata');
+
+                this.orderData = response.data;
             }
         },
 
@@ -182,6 +201,10 @@
                 totalprice.toFixed(2);
                 parseFloat(totalprice);
                 return totalprice;
+            },
+
+            orderHistory(){
+                return this.orderData.filter(e => e.table_number === Number(this.tablenumber));
             }
         },
 

@@ -2027,6 +2027,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2059,7 +2071,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       tablenumber: 1,
       totaltables: [1, 2, 3, 4, 5],
       comment: null,
-      searchquery: ''
+      searchquery: '',
+      orderData: []
     };
   },
   methods: {
@@ -2080,6 +2093,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.orderitems = [];
       this.comment = '';
       alert('bestelling aangemaakt!');
+      this.getOrderHistory();
     },
     deleteOrder: function deleteOrder() {
       this.orderitems = [];
@@ -2103,17 +2117,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return false;
+    },
+    getOrderHistory: function getOrderHistory() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.get('/getsalesdata');
+
+              case 2:
+                response = _context2.sent;
+                _this2.orderData = response.data;
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   computed: {
     filteredItems: function filteredItems() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.searchquery === '') {
         return this.menuitems;
       } else {
         return this.menuitems.filter(function (item) {
-          return _this2.filterItem(item);
+          return _this3.filterItem(item);
         });
       }
     },
@@ -2128,6 +2166,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       totalprice.toFixed(2);
       parseFloat(totalprice);
       return totalprice;
+    },
+    orderHistory: function orderHistory() {
+      var _this4 = this;
+
+      return this.orderData.filter(function (e) {
+        return e.table_number === Number(_this4.tablenumber);
+      });
     }
   }
 });
@@ -38665,7 +38710,7 @@ var render = function() {
                 expression: "searchquery"
               }
             ],
-            attrs: { type: "text" },
+            attrs: { type: "text", placeholder: "Zoek een gerecht" },
             domProps: { value: _vm.searchquery },
             on: {
               input: function($event) {
@@ -38862,7 +38907,40 @@ var render = function() {
             [_vm._v("Bestelling verwijderen")]
           ),
           _vm._v(" "),
-          _vm._m(2)
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("h3", [_vm._v("Herhaalbestellingen: ")]),
+              _vm._v(" "),
+              _vm._l(_vm.orderHistory, function(order) {
+                return _c("ul", [_c("li", [_vm._v(_vm._s(order))])])
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.orderHistory, function(order) {
+                return _c("table", [
+                  _c("tr", [
+                    _c("td", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(order.id) +
+                          "\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(order.id) +
+                          "\n                            "
+                      )
+                    ])
+                  ])
+                ])
+              })
+            ],
+            2
+          )
         ])
       ])
     ])
@@ -38915,14 +38993,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("h3", [_vm._v("Herhaalbestellingen: ")])
     ])
   }
 ]
