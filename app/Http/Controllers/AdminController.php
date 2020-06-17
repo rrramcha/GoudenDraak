@@ -50,9 +50,9 @@ class AdminController extends Controller
 
         $validData = $request->validate([
             'item_name' => 'required',
-            'price' => 'required|not_regex:/.*,.*/',
+            'price' => 'required|regex:/[0-9]*\.[0-9]*/\'',
             'item_category' => 'required',
-            'spiciness_scale' => 'required',
+            'spiciness_scale' => 'required|min:0|max:3',
             'allergies' => ''
         ]);
         $allergies = [];
@@ -88,7 +88,7 @@ class AdminController extends Controller
             'item_name' => 'required',
             'price' => 'required|regex:/[0-9]*\.[0-9]*/',
             'item_category' => 'required',
-            'spiciness_scale' => 'required',
+            'spiciness_scale' => 'required|min:0|max:3',
             'allergies' => ''
         ]);
 
