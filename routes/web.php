@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/menu', 'HomeController@showMenu')->name('menu');
-Route::get('/menu/download', 'HomeController@downloadMenu')->name('menu.download');
-Route::get('/contact', 'HomeController@showContact')->name('contact');
-Route::get('/news', 'HomeController@showNews')->name('news');
-Route::get('/getmenuitems', 'HomeController@getJSONMenu')->name('getmenuitems');
-Route::get('/getsalesdata', 'HomeController@getSalesData')->name('getsalesdata');
-Route::get('/gettransactions', 'HomeController@getJSONTransactions')->name('gettransactions');
+Route::get('/', 'MainController@index')->name('home');
+Route::get('/menu', 'MainController@showMenu')->name('menu');
+Route::get('/menu/download', 'MainController@downloadMenu')->name('menu.download');
+Route::get('/contact', 'MainController@showContact')->name('contact');
+Route::get('/news', 'MainController@showNews')->name('news');
+Route::get('/getmenuitems', 'MainController@getJSONMenu')->name('getmenuitems');
+Route::get('/getsalesdata', 'MainController@getSalesData')->name('getsalesdata');
+Route::get('/gettransactions', 'MainController@getJSONTransactions')->name('gettransactions');
 
 
 Route::prefix('kassa')->name('register.')->group(
@@ -30,8 +30,8 @@ Route::prefix('kassa')->name('register.')->group(
         Route::get('/sales', 'RegisterController@showSales')->name('sales');
     }
 );
-Route::post('/sendorder', 'HomeController@sendOrder')->name('sendorder');
-Route::post('/repeatorder', 'HomeController@repeatOrder')->name('repeatorder');
+Route::post('/sendorder', 'MainController@sendOrder')->name('sendorder');
+Route::post('/repeatorder', 'MainController@repeatOrder')->name('repeatorder');
 
 Route::prefix('admin')->name('admin.')->group(
     function () {

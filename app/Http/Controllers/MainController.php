@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use PHPUnit\Util\Json;
 use function MongoDB\BSON\toJSON;
 
-class HomeController extends Controller
+class wMainController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -132,7 +132,7 @@ class HomeController extends Controller
         $items = DB::table('menu')
             ->join('transactions_items', 'item_id', '=', 'menu.id')->where('transaction_id', $request[0])
             ->get();
-        
+
         return $items;
     }
 }
