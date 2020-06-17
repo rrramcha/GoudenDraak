@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-7">
-                    <input v-model="searchquery" type="text">
+                    <input v-model="searchquery" type="text" placeholder="Zoek een gerecht">
                     <table class="table">
                         <thead>
                             <tr>
@@ -75,10 +75,30 @@
                         </tbody>
                     </table>
                     <h4>Totaalprijs: € {{ totalprice }}</h4>
+                    <label> Tafelnummer:
+                        <select v-model="tablenumber">
+                            <option v-for="table in totaltables">{{table}}</option>
+                        </select>
+                    </label>
                     <label>
                         <input v-model="comment" placeholder="Notities">
                     </label>
-                    <button  v-on:click="sendOrder" class="btn btn-sm btn-info">Bestelling Aanmaken</button>
+
+                    <button  v-on:click="sendOrder" class="btn btn-sm btn-outline-dark">Bestelling aanmaken</button>
+                    <button  v-on:click="deleteOrder" class="btn btn-sm btn-dark mt-2">Bestelling verwijderen</button>
+
+                    <div class="card-body">
+                        <h3>Herhaalbestellingen: </h3>
+                        <ul v-for="order in orderHistory">
+                            <li>
+                                <b>Order ID:</b> {{order.id}}<br>
+                                <b>Tafel No:</b> {{order.table_number}}<br>
+                                <b>Besteltijd:</b> {{order.date}}<br>
+                                <button v-on:click="repeatOrder(order.id)" class="btn btn-sm btn-success">Nogmaals bestellen</button>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,21 +111,23 @@
             const response = await axios.get('/getmenuitems');
 
             this.menuitems = response.data;
+            this.getOrderHistory();
         },
 
         data () {
             return {
                 menuitems: [],
                 orderitems: [],
-                totalprice: 0.0,
+                tablenumber: 1,
+                totaltables: [1, 2, 3, 4, 5],
                 comment: null,
-                searchquery: ''
+                searchquery: '',
+                orderData: []
             };
         },
         methods: {
             addMenuItem(item){
                 this.orderitems.push(item);
-                this.updatePrice();
             },
 
             removeMenuItem(item){
@@ -113,29 +135,26 @@
                 if (index > -1) {
                     this.orderitems.splice(index, 1);
                 }
-                this.updatePrice();
             },
 
-            updatePrice(){
-                this.totalprice = 0;
-                for(let x = 0; x < this.orderitems.length; x++){
-                    this.totalprice+=this.orderitems[x].price;
-                }
-                this.totalprice = Math.round(this.totalprice*100)/100;
-                this.totalprice.toFixed(2);
-                parseFloat(this.totalprice);
+            onlyUnique(value, index, self) {
+                return self.indexOf(value) === index;
             },
 
             sendOrder(){
-                axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
+                axios.post('/sendorder', [this.orderitems, this.comment, this.tablenumber]).then(function (response) {
 
                     console.log(response.data);
 
                 });
                 this.orderitems = [];
                 this.comment = '';
-                this.updatePrice();
-                alert('bestelling aangemaakt!');
+                alert('Bestelling aangemaakt!');
+                this.getOrderHistory();
+            },
+            deleteOrder(){
+                this.orderitems = [];
+                this.comment = '';
             },
             filterItem(item){
                 let fullnumber = '';
@@ -156,7 +175,22 @@
                 }
 
                 return false;
+            },
+            async getOrderHistory() {
+                const response = await axios.get('/gettransactions');
+
+                this.orderData = response.data;
+            },
+
+            repeatOrder(TransactionID){
+                let self = this;
+                axios.post('/repeatorder', [TransactionID]).then(function (response) {
+                self.orderitems = response.data;
+                console.log(response.data);
+                }
+                );
             }
+
         },
 
         computed:{
@@ -168,8 +202,25 @@
                     return this.menuitems.filter(item => this.filterItem(item));
                 }
 
+            },
+            totalprice(){
+                var totalprice = 0;
+                for (var x = 0; x < this.orderitems.length; x++) {
+                    totalprice += this.orderitems[x].price;
+                }
+                totalprice = Math.round(totalprice * 100) / 100;
+                totalprice.toFixed(2);
+                parseFloat(totalprice);
+                return totalprice;
+            },
+
+            orderHistory(){
+                return this.orderData.filter(e => e.table_number === Number(this.tablenumber));
             }
-        }
+
+
+
+        },
 
 
     }

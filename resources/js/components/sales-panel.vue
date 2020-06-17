@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-10">
+        <div class="col-9">
             <label> Vanaf
                 <input v-model="firstdate" type="date">
             </label>
@@ -31,9 +31,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="card">
-                <h3 class="card-body">Omzet: {{turnover}}</h3>
+                <h3 class="card-body">Omzet: €{{turnover}}</h3>
+                <h3 class="card-body">BTW: €{{btwAmount}}</h3>
+                <h3 class="card-body">Omzet excl BTW: €{{turnoverExclusive}}</h3>
             </div>
         </div>
 
@@ -58,12 +60,12 @@
         },
 
         methods:{
-            calculateTurnover(){
-
-            },
-
-            getSales(){
-
+            roundMoney(money) {
+                var shmoney = money;
+                shmoney = Math.round(shmoney * 100) / 100;
+                shmoney.toFixed(2);
+                parseFloat(shmoney);
+                return shmoney;
             }
         },
 
@@ -80,6 +82,12 @@
                 turnover.toFixed(2);
                 parseFloat(turnover);
                 return turnover;
+            },
+            btwAmount() {
+                return this.roundMoney(this.turnover * 0.09);
+            },
+            turnoverExclusive() {
+                return this.roundMoney(this.turnover * 0.91);
             }
         }
     }
