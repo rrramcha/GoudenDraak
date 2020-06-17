@@ -102,9 +102,12 @@ class HomeController extends Controller
 
     public function sendOrder(Request $request){
         $data = $request->all();
-
+        $comment = '';
+        if($data[1]){
+            $comment = $data[1];
+        }
         $transaction = Transaction::create([
-            'date'=>Carbon::now(), 'comment'=>$data[1]]);
+            'date'=>Carbon::now(), 'comment'=>$comment]);
 
         $id = $transaction->id;
 

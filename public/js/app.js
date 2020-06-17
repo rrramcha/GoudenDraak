@@ -2015,17 +2015,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     var _this = this;
@@ -2055,14 +2044,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       menuitems: [],
       orderitems: [],
+      totalprice: 0.0,
       comment: null,
-      searchquery: '',
-      transactions: []
+      searchquery: ''
     };
   },
   methods: {
     addMenuItem: function addMenuItem(item) {
       this.orderitems.push(item);
+      this.updatePrice();
     },
     removeMenuItem: function removeMenuItem(item) {
       var index = this.orderitems.indexOf(item);
@@ -2070,6 +2060,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (index > -1) {
         this.orderitems.splice(index, 1);
       }
+
+      this.updatePrice();
+    },
+    updatePrice: function updatePrice() {
+      this.totalprice = 0;
+
+      for (var x = 0; x < this.orderitems.length; x++) {
+        this.totalprice += this.orderitems[x].price;
+      }
+
+      this.totalprice = Math.round(this.totalprice * 100) / 100;
+      this.totalprice.toFixed(2);
+      parseFloat(this.totalprice);
     },
     sendOrder: function sendOrder() {
       axios.post('/sendorder', [this.orderitems, this.comment]).then(function (response) {
@@ -2077,10 +2080,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
       this.orderitems = [];
       this.comment = '';
+      this.updatePrice();
       alert('bestelling aangemaakt!');
-    },
-    deleteOrder: function deleteOrder() {
-      this.orderitems = [];
     },
     filterItem: function filterItem(item) {
       var fullnumber = '';
@@ -2113,18 +2114,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return _this2.filterItem(item);
         });
       }
-    },
-    totalprice: function totalprice() {
-      var totalprice = 0;
-
-      for (var x = 0; x < this.orderitems.length; x++) {
-        totalprice += this.orderitems[x].price;
-      }
-
-      totalprice = Math.round(totalprice * 100) / 100;
-      totalprice.toFixed(2);
-      parseFloat(totalprice);
-      return totalprice;
     }
   }
 });
@@ -2148,12 +2137,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2230,13 +2213,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
-    roundMoney: function roundMoney(money) {
-      var shmoney = money;
-      shmoney = Math.round(shmoney * 100) / 100;
-      shmoney.toFixed(2);
-      parseFloat(shmoney);
-      return shmoney;
-    }
+    calculateTurnover: function calculateTurnover() {},
+    getSales: function getSales() {}
   },
   computed: {
     filteredData: function filteredData() {
@@ -2252,18 +2230,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       for (var x = 0; x < this.filteredData.length; x++) {
         turnover += this.salesdata[x].price;
       }
-      /*turnover = Math.round(turnover*100)/100;
+
+      turnover = Math.round(turnover * 100) / 100;
       turnover.toFixed(2);
-      parseFloat(turnover);*/
-
-
-      return this.roundMoney(turnover);
-    },
-    btwAmount: function btwAmount() {
-      return this.roundMoney(this.turnover * 0.09);
-    },
-    turnoverExclusive: function turnoverExclusive() {
-      return this.roundMoney(this.turnover * 0.91);
+      parseFloat(turnover);
+      return turnover;
     }
   }
 });
@@ -38817,36 +38788,6 @@ var render = function() {
               on: { click: _vm.sendOrder }
             },
             [_vm._v("Bestelling Aanmaken")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-sm btn-danger mt-1",
-              on: { click: _vm.deleteOrder }
-            },
-            [_vm._v("Bestelling verwijderen")]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("h4", [_vm._v("Herhaalbestellingen: ")]),
-              _vm._v(" "),
-              _vm._l(_vm.transactions, function(transaction) {
-                return _c("ul", [
-                  _c("li", [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(transaction) +
-                        "\n                        "
-                    )
-                  ])
-                ])
-              })
-            ],
-            2
           )
         ])
       ])
@@ -38925,7 +38866,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-9" }, [
+    _c("div", { staticClass: "col-10" }, [
       _c("label", [
         _vm._v(" Vanaf\n            "),
         _c("input", {
@@ -39005,14 +38946,6 @@ var render = function() {
                       _vm._s(item.date) +
                       "\n                    "
                   )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    "\n                        €" +
-                      _vm._s(item.price) +
-                      "\n                    "
-                  )
                 ])
               ])
             ])
@@ -39022,18 +38955,10 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-3" }, [
+    _c("div", { staticClass: "col-2" }, [
       _c("div", { staticClass: "card" }, [
         _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Omzet: €" + _vm._s(_vm.turnover))
-        ]),
-        _vm._v(" "),
-        _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Btw: €" + _vm._s(_vm.btwAmount))
-        ]),
-        _vm._v(" "),
-        _c("h3", { staticClass: "card-body" }, [
-          _vm._v("Omzet exclusief btw: €" + _vm._s(_vm.turnoverExclusive))
+          _vm._v("Omzet: " + _vm._s(_vm.turnover))
         ])
       ])
     ])
@@ -39050,9 +38975,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Product")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Datum")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Prijs")])
+        _c("th", [_vm._v("Datum")])
       ])
     ])
   }
@@ -51297,15 +51220,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!**********************************************!*\
   !*** ./resources/js/components/Register.vue ***!
   \**********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Register.vue?vue&type=template&id=97358ae4&scoped=true& */ "./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&");
 /* harmony import */ var _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Register.vue?vue&type=script&lang=js& */ "./resources/js/components/Register.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -51335,7 +51257,7 @@ component.options.__file = "resources/js/components/Register.vue"
 /*!***********************************************************************!*\
   !*** ./resources/js/components/Register.vue?vue&type=script&lang=js& ***!
   \***********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

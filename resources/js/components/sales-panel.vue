@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-9">
+        <div class="col-10">
             <label> Vanaf
                 <input v-model="firstdate" type="date">
             </label>
@@ -14,7 +14,6 @@
                     <th>Transactie</th>
                     <th>Product</th>
                     <th>Datum</th>
-                    <th>Prijs</th>
                 </tr>
                 </thead>
                 <tbody v-for="item in filteredData" >
@@ -28,18 +27,13 @@
                         <td>
                             {{item.date}}
                         </td>
-                        <td>
-                            €{{item.price}}
-                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <div class="card">
-                <h3 class="card-body">Omzet: €{{turnover}}</h3>
-                <h3 class="card-body">Btw: €{{btwAmount}}</h3>
-                <h3 class="card-body">Omzet exclusief btw: €{{turnoverExclusive}}</h3>
+                <h3 class="card-body">Omzet: {{turnover}}</h3>
             </div>
         </div>
 
@@ -64,12 +58,12 @@
         },
 
         methods:{
-            roundMoney(money){
-                let shmoney = money;
-                shmoney = Math.round(shmoney*100)/100;
-                shmoney.toFixed(2);
-                parseFloat(shmoney);
-                return shmoney;
+            calculateTurnover(){
+
+            },
+
+            getSales(){
+
             }
         },
 
@@ -82,16 +76,10 @@
                 for(let x = 0; x < this.filteredData.length; x++){
                     turnover+=this.salesdata[x].price;
                 }
-                /*turnover = Math.round(turnover*100)/100;
+                turnover = Math.round(turnover*100)/100;
                 turnover.toFixed(2);
-                parseFloat(turnover);*/
-                return this.roundMoney(turnover);
-            },
-            btwAmount(){
-                return this.roundMoney(this.turnover * 0.09);
-            },
-            turnoverExclusive(){
-                return this.roundMoney(this.turnover * 0.91);
+                parseFloat(turnover);
+                return turnover;
             }
         }
     }

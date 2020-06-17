@@ -3,7 +3,7 @@
 
     <div id="app">
         <div class="container">
-            <h1 class="display-3">Verkoopoverzicht</h1>
+            <h1 class="display-1">Welkom in de mf sales panel</h1>
             <sales-panel></sales-panel>
         </div>
     </div>
